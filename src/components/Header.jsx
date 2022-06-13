@@ -118,7 +118,7 @@ const Header = () => {
                             <p>
                                 Spend less time on managing payroll for your employees and more time on building your company with ZapSlip flexible features.
                             </p>
-                            <div id="explore-cards" class="d-sm-flex justify-content-sm-start align-items-sm-start row-md-5 offset-md-1 flex-sm-wrap">
+                            <div id="explore-cards" class="d-sm-flex justify-content-sm-start align-items-sm-start row-md-5  flex-sm-wrap">
 
                                 <div className='explore-card-1' class="explore-card col-sm-6 col-lg-3 row justify-content-center align-items-center  flex-direction-column">
                                     <h4>Smart Collaboration</h4>
