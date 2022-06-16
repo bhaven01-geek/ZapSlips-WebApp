@@ -295,7 +295,7 @@ p {
   border: 2px solid rgba(248, 162, 83, 1);
   border-radius: 10px;
   width: 150px;
-  height: 50px;
+  height: 45px;
 }
 
 #login-btn {
@@ -305,7 +305,7 @@ p {
   margin: auto;
   border-radius: 10px;
   width: 130px;
-  height: 50px;
+  height: 45px;
   font-family: 'Inter' , 'sans-serif';
 }
 
@@ -846,10 +846,7 @@ footer .logo {
   margin-top: 10px;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767.98px) {
-  .footer{
-      /* text-align:center; */
-    } 
+@media only screen and (min-width: 320px) and (max-width: 767.98px) { 
   .footer .row{
       margin:10px;
     }
@@ -858,9 +855,6 @@ footer .logo {
     }
     .logo{
       /* margin:0 auto; */
-    }
-    .footer .col-sm-6 , .footer .col-lg-2{
-      width:50%;
     }
     .footer .col-sm-6 , .footer .col-lg-4{
       margin:10px auto;

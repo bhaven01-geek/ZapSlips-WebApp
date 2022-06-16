@@ -6,6 +6,9 @@ import Vector1Img from '../Assets/layout.svg';
 import Vector2Img from '../Assets/layout2.svg';
 import UserVector from '../Assets/user.svg';
 import ArrowRight from '../Assets/arrow-right-circle.svg';
+
+import { Link } from "react-router-dom"
+
 const Header = () => {
     return (
         <>
@@ -36,17 +39,16 @@ const Header = () => {
 
                         <ul id="request-head" className="navbar-nav mr-0 mt-2 mt-lg-0">
                             <li className="nav-item d-none d-md-block mr-4">
-                                <button id="login-btn" type="button" className="btn btn-lg text-white font-weight-bold ">
-                                {/* <i class="fa fa-user-f"></i> */}
+                                <Link to = "login"  id="login-btn" type="button" className="btn btn-lg text-white font-weight-bold ">
                                 <img src={UserVector} alt="User" class="img-user" />
                                 Login
-                                </button>
+                                </Link>
                             </li>
 
                             <li className="nav-item d-none d-md-block  ">
-                                <button id="try-free-btn" type="button" className="btn btn-lg-0 text-black  font-weight-bold ">
+                                <Link to = "signup" id="try-free-btn" className="btn btn-lg-0 text-black  font-weight-bold ">
                                 Try For Free
-                                    </button>
+                                </Link>
                             </li>
 
                         </ul>
@@ -54,6 +56,7 @@ const Header = () => {
                 </nav>
             </header>
             {/* <!-- Header Ends --> */}
+
             {/* <!-- Intro Starts --> */}
             <div id="intro" className="d-flex flex-direction-column flex-direction-md-row flex-wrap flex-wrap-md-nowrap">
                 <div className="container-fluid-md  w-md-50 order-md-3 overflow-hidden">
