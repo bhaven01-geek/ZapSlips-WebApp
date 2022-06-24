@@ -6,23 +6,41 @@ import Header from './components/Header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
+// import { ThemeProvider } from '@mui/material/styles';
+// import { CssBaseline, StyledEngineProvider } from '@mui/material';
+
+// import theme from './themes/index'
+import DashboardLayout from './layout/layout1';
+import Dashboard from './layout/MainComponents/Dashboard';
+import PayslipMode from './pages/PayslipMode';
+import ExcelCard from './layout/ExcelCard/ExcelCard';
+
+
 function App() {
   return (
-    
+
     <div className="App">
-    <BrowserRouter>
-      <Routes>
 
-        <Route path = '/' element={<Header />} />
-        <Route path = 'login' element={<Login/>} />
-        <Route path = 'signup' element = {<SignUp/>} />
+      {/* <ThemeProvider theme={theme}> */}
+      {/* <CssBaseline /> */}
 
-      </Routes>
-    </BrowserRouter>
-     </div>
-    //     {/* <Header /> */}
-    //     <Login />
-    //     {/* <SignUp /> */}
+      <BrowserRouter>
+        <Routes>
+
+          <Route path='/' element={<Header />} />
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<SignUp />} />
+          <Route path='/app' element={<DashboardLayout />}>
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='payslips' element={<PayslipMode />} />
+            <Route path='excel' element={<ExcelCard />} />
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
+      {/* </ThemeProvider> */}
+    </div>
+
   );
 }
 
