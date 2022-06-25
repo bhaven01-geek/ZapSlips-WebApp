@@ -14,6 +14,7 @@ import DashboardLayout from './layout/layout1';
 import Dashboard from './layout/MainComponents/Dashboard';
 import PayslipMode from './pages/PayslipMode';
 import ExcelCard from './layout/ExcelCard/ExcelCard';
+import MultiStepEmpForm from './layout/MultiStepsForm/StepForm';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path='dashboard' element={<Dashboard />} />
             <Route path='payslips' element={<PayslipMode />} />
             <Route path='excel' element={<ExcelCard />} />
+            <Route path='employee' element={<MultiStepEmpForm />} />
           </Route>
 
         </Routes>

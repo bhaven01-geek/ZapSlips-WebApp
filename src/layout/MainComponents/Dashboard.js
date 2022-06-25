@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 // material-ui
 import { Grid, Typography, Divider } from '@mui/material';
-
+import { styled } from '@mui/material/styles';
 // project imports
 import { gridSpacing } from '../../store/constants';
 import TotalPayBarChart from './TotaPayBarChart';
@@ -39,6 +39,10 @@ const TDS = {
     content: "TDS Deductions"
 }
 
+const GridContainerStyle = styled(Grid)(({ theme }) => ({
+
+}));
+
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
     useEffect(() => {
@@ -52,14 +56,14 @@ const Dashboard = () => {
 
             </Grid>
             <Grid item xs={12} lg={12}>
-                <Grid container spacing={2}>
-                    <Grid item lg={4} md={12} sm={12} xs={12}>
+                <GridContainerStyle container spacing={2} >
+                    <Grid item lg={4} md={4} sm={6} xs={12} >
                         <ProvidentFundCard cssStyle={PF} />
                     </Grid>
-                    <Grid item lg={4} md={12} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={6} xs={12}>
                         <ProvidentFundCard cssStyle={AdSalary} />
                     </Grid>
-                    <Grid item lg={4} md={12} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                         {/* <EarningCard isLoading={isLoading} /> */}
                         <ProvidentFundCard cssStyle={TDS} />
                     </Grid>
@@ -85,10 +89,10 @@ const Dashboard = () => {
                     {/* </Grid>
             </Grid>
             {/* <Grid item xs={12}> */}
-                </Grid>
+                </GridContainerStyle>
             </Grid>
-            <Grid item xs={12} sx={{ mt: 4 }} >
-                <Grid container   >
+            <Grid item xs={12} sx={{ mt: 4 }}>
+                <Grid container  sx= {{mx:1}}>
                     <Grid item xs={12} md={8} lg={8} sx={{ background: '#FFFFFF', borderRadius: "10px", border: "1px solid #FCFCFC" }} >
                         <TotalPayBarChart isLoading={isLoading} />
                     </Grid>
