@@ -19,7 +19,7 @@
     gap: 25px;
     width: 360px;
   }
-  form {
+  .details-cont form {
     /* box-shadow: black 0 0 2px 0; */
     border-radius: 4px;
     padding: 40px 30px;
@@ -32,6 +32,5 @@
     width: 360px;
   }
   .react-tel-input .form-control , .react-tel-input {
-
     height: 56px;
 }

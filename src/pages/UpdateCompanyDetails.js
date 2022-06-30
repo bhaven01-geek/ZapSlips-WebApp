@@ -117,6 +117,7 @@ const StoreAgencyDetails = () => {
   return loading ? (
     <CircularProgress color="secondary" />
   ) : (
+    <div className ="details-cont">
     <Container component="main" maxWidth="xs" sx = {{gap:"25px"}}>
       <CssBaseline />
       <Grid component={Paper} elevation={6} sx={{
@@ -237,6 +238,7 @@ const StoreAgencyDetails = () => {
       </Box> */}
 
     </Container>
+    </div>
   );
 };
 
