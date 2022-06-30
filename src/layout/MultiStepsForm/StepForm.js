@@ -39,11 +39,11 @@ function MultiStepEmpForm() {
     const maxSteps = steps.length;
 
     return (
-        <Box sx={{flexGrow: 1 }}>
+        <Box  sx={{flexGrow: 1 }}>
             <Box container sx= {{flexGrow:1 , p:2}}>
                 <Typography component="h1" variant="h5">{steps[activeStep].id}</Typography>
             </Box>
-            <Box sx={{ width: '100%', p: 2  }}>
+            <Box  sx={{ width: '100%', p: 2  }}>
                 {steps[activeStep].element}
             </Box>
             {/* <MobileStepper

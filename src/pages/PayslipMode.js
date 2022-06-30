@@ -10,13 +10,15 @@ const PayslipMode = () => (
     <Container maxWidth="xl">
         <Grid container spacing={gridSpacing} justifyContent="space-between" alignItems="center">
             <Grid item xs={12} sm={12} md={6}>
-                <SelectMode bgcolor="#FFFFFF" text="Single Employee" btnColor="#341F97" icon={PersonPin} />
+                <SelectMode bgcolor="#FFFFFF" text="Single Employee" btnColor="#0B2DAC" icon={PersonPin} />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-                <SelectMode bgcolor="#FFFFFF" text="Multiple Employee" btnColor="#341F97" icon={PeopleAltOutlined} />
+                <SelectMode bgcolor="#FFFFFF" text="Multiple Employee" btnColor="#0B2DAC" icon={PeopleAltOutlined} />
             </Grid>
         </Grid>
     </Container>
 );
 
 export default PayslipMode;
+
+// 0B2DAC violet - 341F97 

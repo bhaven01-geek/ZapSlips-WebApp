@@ -16,11 +16,10 @@ const SelectMode = (props) => {
 
         overflow: 'hidden',
         position: 'relative',
-        title: "hello",
         background: props.bgcolor,
-        boxShadow: "0px 2px 2px 10px rgba(0, 0, 0, 0.0197),0px 6px 5px 10px rgba(0, 0, 0, 0.0283),0px 12px 10px 10px rgba(0, 0, 0, 0.035), 0px 22px 17px 10px rgba(0, 0, 0, 0.0417),0px 41px 33px 0px rgba(0, 0, 0, 0.0503), 0px 100px 80px 0px rgba(0, 0, 0, 0.07)",
+        boxShadow: "0px 2px 2px 4px rgba(0, 0, 0, 0.0197),0px 6px 5px 4px rgba(0, 0, 0, 0.0283),0px 12px 5px 4px rgba(0, 0, 0, 0.035), 0px 10px 10px 4px rgba(0, 0, 0, 0.0417),0px 41px 33px 0px rgba(0, 0, 0, 0.0503), 0px 100px 80px 0px rgba(0, 0, 0, 0.07)",
         [theme.breakpoints.up('lg')]: {
-            width: '360px',
+            width: '320px',
         },
     }));
 
@@ -31,7 +30,7 @@ const SelectMode = (props) => {
             <CardWrapper border={false} sm sx={{ width: '300px', borderRadius: '10px' }}>
                 <Box sx={{ p: 0.5 }}>
                     <Stack spacing={3} justifyContent="space-between" alignItems="center" sx={{ margin: '20px' }} >
-                        <Typography sx={{ fontSize: '2rem', fontWeight: 500, color: props.btnColor, textAlign: "center" }}>
+                        <Typography sx={{ fontSize: '1.6rem', fontWeight: 500, color: props.btnColor, textAlign: "center" }}>
                             {props.text}
                         </Typography>
                         <Avatar

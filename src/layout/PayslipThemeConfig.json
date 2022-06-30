@@ -1,0 +1,87 @@
+{
+    "themes": [
+      {
+        "name": "Default",
+        "bgColor": "#ffffff",
+        "bgColor2": "#fffbf5",
+        "color0": "#000000",
+        "color1": "#322d29",
+        "color2": "#000000",
+        "color3": "#4f4f4f"
+      },
+      {
+        "name": "Navy Blue",
+        "bgColor": "#1e3163",
+        "bgColor2": "#f8f8f8",
+        "color0": "#ffffff",
+        "color1": "#f037a5",
+        "color2": "#2d46b9",
+        "color3": "#000000"
+      },
+      {
+        "name": "Happy Green",
+        "bgColor": "#28ffbf",
+        "bgColor2": "#bcffb9",
+        "color0": "#044e41",
+        "color1": "#044e41",
+        "color2": "#696249",
+        "color3": "#414332"
+      },
+      {
+        "name": "Cold Black",
+        "bgColor": "#261c2c",
+        "bgColor2": "#f5f9ff",
+        "color0": "#e0e6f0",
+        "color1": "#624667",
+        "color2": "#5c527f",
+        "color3": "#2f0844"
+      },
+      {
+        "name": "Space Beige",
+        "bgColor": "#45046a",
+        "bgColor2": "#f1ebbb",
+        "color0": "#ffffff",
+        "color1": "#b4076b",
+        "color2": "#45046a",
+        "color3": "#5c2a9d"
+      },
+      {
+        "name": "Red Magic",
+        "bgColor": "#e66465",
+        "bgColor2": "#fff0f0",
+        "color0": "#ffffff",
+        "color1": "#36253c",
+        "color2": "#1e1010",
+        "color3": "#5f0202"
+      },
+      {
+        "name": "Earth Light",
+        "bgColor": "#cee5d0",
+        "bgColor2": "#f3f0d7",
+        "color0": "#000",
+        "color1": "#000",
+        "color2": "#5e454b",
+        "color3": "#031c06"
+      },
+      {
+        "name": "Cream Gold",
+        "bgColor": "#fcecd0",
+        "bgColor2": "#fcecd0",
+        "color0": "#000000",
+        "color1": "#5f2702",
+        "color2": "#8d3a02",
+        "color3": "#050505"
+      },
+      {
+        "name": "Pure Yellow",
+        "bgColor": "#f5e79d",
+        "bgColor2": "#ffffff",
+        "color0": "#000000",
+        "color1": "#322d29",
+        "color2": "#ce5555",
+        "color3": "#61457d"
+      }
+    ],
+    "length": 1
+  }
+  

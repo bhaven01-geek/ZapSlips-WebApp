@@ -49,7 +49,7 @@ function NavItem({ item, active }) {
 
   const activeRootStyle = {
     color: 'primary.main',
-    color: '#341F97',
+    color: '#0B2DAC',
     fontWeight: 'fontWeightMedium',
     bgcolor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
   };

@@ -15,6 +15,9 @@ import Dashboard from './layout/MainComponents/Dashboard';
 import PayslipMode from './pages/PayslipMode';
 import ExcelCard from './layout/ExcelCard/ExcelCard';
 import MultiStepEmpForm from './layout/MultiStepsForm/StepForm';
+import ChooseTheme from './pages/ChooseTheme';
+import UpdateProfile from './pages/UpdateProfile';
+import StoreAgencyDetails from './pages/UpdateCompanyDetails';
 
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
             <Route path='payslips' element={<PayslipMode />} />
             <Route path='excel' element={<ExcelCard />} />
             <Route path='employee' element={<MultiStepEmpForm />} />
+            <Route path='themes' element={<ChooseTheme />} />
+            <Route path='updateprofile' element={<UpdateProfile />} />
+            <Route path='companydetails' element={<StoreAgencyDetails />} />
           </Route>
 
         </Routes>

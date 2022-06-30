@@ -1,0 +1,37 @@
+
+.login-signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* height: 90vh; */
+  }
+  .login-signup-container form {
+    /* box-shadow: black 0 0 2px 0; */
+    border-radius: 4px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+  
+    background: white;
+    align-items: center;
+    gap: 25px;
+    width: 360px;
+  }
+  form {
+    /* box-shadow: black 0 0 2px 0; */
+    border-radius: 4px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+  
+    background: white;
+    align-items: center;
+    gap: 20px;
+    width: 360px;
+  }
+  .react-tel-input .form-control , .react-tel-input {
+
+    height: 56px;
+}
