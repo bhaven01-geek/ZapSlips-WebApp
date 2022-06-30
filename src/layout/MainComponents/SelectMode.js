@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
 import '../../Assets/scss/_theme_vars.scss'
+
+
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
 import { Avatar, Box, Button, Typography, Stack, Divider } from '@mui/material';
 import { PersonPin } from '@mui/icons-material';
 // project imports
 import MainCard from './MainCard'
-
+import { useNavigate } from "react-router-dom";
 
 // ===========================|| - MODE CARD ||=========================== //
 
 const SelectMode = (props) => {
+
+    let navigate = useNavigate();
 
     const CardWrapper = styled(MainCard)(({ theme }) => ({
 
@@ -21,6 +25,10 @@ const SelectMode = (props) => {
         [theme.breakpoints.up('lg')]: {
             width: '320px',
         },
+        '& .MuiButton-outlined:hover':{
+            background:"#0B2DAC",
+            border:"none"
+        }
     }));
 
     const theme = useTheme();
@@ -57,9 +65,17 @@ const SelectMode = (props) => {
                             Generate a single payslip as pdf by manually giving input for employee details, earnings, etc
                         </Typography>
                         <Button
-                            type="submit"
+                            onClick = { () => {navigate(`/app${props.url}`)}}
                             variant="outlined"
-                            sx={{ border: '1px solid #AFC8FF', color: '#FFFFFF', background: props.btnColor, fontWeight: 600, width: '200px', borderRadius: '10px' }}
+                            sx={{
+                                border: '1px solid #AFC8FF',
+                                color: '#FFFFFF', 
+                                background: props.btnColor, 
+                                fontWeight: 600, 
+                                width: '200px', 
+                                borderRadius: '10px'
+                                
+                        }}
                         >
                             SELECT
                         </Button>

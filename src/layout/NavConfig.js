@@ -25,17 +25,17 @@ const navConfig = [
   },
   {
     title: 'Company Details',
-    path: '/',
+    path: '/app/companydetails',
     icon: <HailOutlinedIcon />,
   },
   {
     title: 'Update Profile',
-    path: '/',
+    path: '/app/updateprofile',
     icon: <FaceOutlinedIcon />,
   },
   {
     title: 'Log Out',
-    path: '/',
+    path: '/logout',
     icon: <LogoutOutlinedIcon />,
   },
 ];
