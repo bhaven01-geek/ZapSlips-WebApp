@@ -152,6 +152,16 @@ const CreateThemeDiv = props => {
           <Button type="submit"
             // variant="containe"
             // color="secondary"
+            sx={{
+              color: '#ffffff', background: "#0B2DAC", fontWeight: 500, width: '90px', borderRadius: '5px',
+              '&:hover': {
+                background: "#0B2DAC",
+                borderRadius: "none"
+              },
+              '&:focus': {
+                outline: "none",
+              }
+            }}
             onClick={() => {
               navigate('gen-slip',
                 {
@@ -162,7 +172,7 @@ const CreateThemeDiv = props => {
                   },
                 });
             }}
-            sx={{ color: '#FFFFFF', fontWeight: 600, width: '140px', borderRadius: '6px' }}
+            
           >
             {/* <CheckBoxIcon/> */}
             Select

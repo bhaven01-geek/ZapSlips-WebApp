@@ -168,7 +168,15 @@ export default function UpdateProfile() {
                             fullWidth
                             variant="contained"
                             // color="primary"
-                            sx={{ background: "#0B2DAC", }}
+                            sx={{ background: "#0B2DAC",
+                            '&:hover': {
+                                background: "#0B2DAC",
+                                borderRadius: "none"
+                            },
+                            '&:focus': {
+                                outline: "none",
+                            }
+                        }}
                             //   className={classes.submit}
                             disabled={loading}
                         >

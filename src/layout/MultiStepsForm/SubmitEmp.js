@@ -56,8 +56,17 @@ const Submit = ({ EmpformData }) => {
   return (
     <>
       {<Box container >
-        <Button variant="contained"
-          color="secondary"
+        <Button
+         sx={{
+          color: '#ffffff', background: "#0B2DAC", fontWeight: 500, width: '150px', borderRadius: '5px',
+          '&:hover': {
+            background: "#0B2DAC",
+            borderRadius: "none"
+          },
+          '&:focus': {
+            outline: "none",
+          }
+        }}
           onClick={handleTheme}>Choose Theme
         </Button>
       </Box>

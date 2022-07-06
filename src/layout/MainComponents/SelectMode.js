@@ -28,6 +28,9 @@ const SelectMode = (props) => {
         '& .MuiButton-outlined:hover':{
             background:"#0B2DAC",
             border:"none"
+        },
+        '& .MuiButton-outlined:focus':{
+            outline:"none",
         }
     }));
 

@@ -20,6 +20,7 @@ const CardWrapper = styled('div')(({ theme }) => ({
     // [theme.breakpoints.up('lg')]: {
     //     width: '500px',
     // },
+   
 
 }));
 
@@ -55,10 +56,16 @@ const ExcelCard = () => {
                                     // startIcon={<CloudDownloadOutlinedIcon />}
                                     variant="outlined"
                                     sx={{
-                                        color: '#FFFFFF', background: "#0B2DAC", fontWeight: 600, width: '140px', borderRadius: '6px', '&:hover': {
-                                            background: "#0B2DAC",
+                                        color: '#ffffff', background: "#0B2DAC", fontWeight: 600, width: '140px', borderRadius: '6px',
+                                            '&:hover':{
+                                                background:"#0B2DAC",
+                                                borderRadius:"none"
+                                            },
+                                            '&:focus':{
+                                                outline:"none",
+                                            }
                                         }
-                                    }}
+                                    }
                                     onClick={() => {
                                        
                                         window.open(

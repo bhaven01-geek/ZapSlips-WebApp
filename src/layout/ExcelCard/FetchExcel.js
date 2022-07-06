@@ -104,8 +104,17 @@ const FetchExcel = () => {
                         // border={false}
                         component="label"
                         // variant="outlined"
+
                         type="submit"
-                        sx={{ color: '#FFFFFF', background: "#0B2DAC", fontWeight: 600, width: '140px', borderRadius: '6px' }}
+                        sx={{ color: '#FFFFFF', background: "#0B2DAC", fontWeight: 600, width: '140px', borderRadius: '6px',
+                        '&:hover':{
+                            background:"#0B2DAC",
+                            border:"none"
+                        },
+                        '&:focus':{
+                            outline:"none",
+                        }
+                        }}
                     >
                         Upload
                         <input
@@ -125,9 +134,14 @@ const FetchExcel = () => {
                             // variant="outlined"
                             onClick={handleExcelSubmit}
                             sx={{
-                                color: '#FFFFFF', background: "#D43F3F", fontWeight: 600, width: '140px', borderRadius: '6px', '& :hover': {
-                                    background: "#D43F3F",
-                                }
+                                color: '#FFFFFF', background: "#D43F3F", fontWeight: 600, width: '140px', borderRadius: '6px',
+                                '&:hover':{
+                                    background:"#D43F3F",
+                                    border:"none"
+                                },
+                                '&:focus':{
+                                    outline:"none",
+                                } ,  
                             }}
                         >
                             Generate

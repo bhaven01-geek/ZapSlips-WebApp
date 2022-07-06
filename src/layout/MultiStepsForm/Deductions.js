@@ -100,7 +100,15 @@ const Deductions = ({ EmpformData, setForm,  handleNext, handleBack }) => {
         <Grid container spacing={4} direction="column" justifyContent="center" alignItems="center">
           <Grid item xs={10} sm={5}>
             <Button
-             sx = {{color: '#ffffff', background: "#D43F3F",fontWeight: 500, width: '90px', borderRadius: '5px'}}
+             sx = {{color: '#ffffff', background: "#D43F3F",fontWeight: 500, width: '90px', borderRadius: '5px' ,
+             '&:hover': {
+              background: "#D43F3F",
+              borderRadius: "none"
+            },
+            '&:focus': {
+              outline: "none",
+            }
+            }}
               onClick={() => handleBack()}>
               Previous
             </Button>
@@ -108,7 +116,15 @@ const Deductions = ({ EmpformData, setForm,  handleNext, handleBack }) => {
 
           <Grid item xs={10} sm={5}>
             <Button 
-             sx={{color: '#ffffff', background: "#0B2DAC", fontWeight: 600, width: '90px', borderRadius: '5px' }}
+             sx={{color: '#ffffff', background: "#0B2DAC", fontWeight: 600, width: '90px', borderRadius: '5px',
+             '&:hover': {
+              background: "#0B2DAC",
+              borderRadius: "none"
+            },
+            '&:focus': {
+              outline: "none",
+            }
+            }}
             onClick={() => handleDeductionsValidate()}>
               Next
             </Button>

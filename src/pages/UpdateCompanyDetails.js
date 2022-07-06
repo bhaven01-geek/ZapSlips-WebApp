@@ -119,127 +119,136 @@ const StoreAgencyDetails = () => {
   return loading ? (
     <CircularProgress color="secondary" />
   ) : (
-    <div className ="details-cont">
-    <Container component="main" maxWidth="xs" sx = {{gap:"25px"}}>
-      <CssBaseline />
-      <Grid component={Paper} elevation={6} sx={{
-                    // marginTop: 8,
-                    // marginBottom:8,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    // background:"none",
-                }}>
+    <div className="details-cont">
+      <Container component="main" maxWidth="xs" sx={{ gap: "25px" }}>
+        <CssBaseline />
+        <Grid component={Paper} elevation={6} sx={{
+          // marginTop: 8,
+          // marginBottom:8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          // background:"none",
+        }}>
 
-        <Avatar sx = {{mt:2}}>
-          {/* <InfoOutlinedIcon /> */}
-          <PersonOutlineOutlinedIcon />
-        </Avatar>
+          <Avatar sx={{ mt: 2 }}>
+            {/* <InfoOutlinedIcon /> */}
+            <PersonOutlineOutlinedIcon />
+          </Avatar>
 
-        <Typography component="h1" variant="h5">
-          Company Details
-        </Typography>
+          <Typography component="h1" variant="h5">
+            Company Details
+          </Typography>
 
-        <form >
-          {error && (
-            <Alert style={{ marginBottom: "16px" }} severity="error">
-              {error}
-            </Alert>
-          )}
-          {message && (
-            <Alert style={{ marginBottom: "16px" }} severity="success">
-              {message}
-            </Alert>
-          )}
+          <form >
+            {error && (
+              <Alert style={{ marginBottom: "16px" }} severity="error">
+                {error}
+              </Alert>
+            )}
+            {message && (
+              <Alert style={{ marginBottom: "16px" }} severity="success">
+                {message}
+              </Alert>
+            )}
 
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="company-name"
-                label="Company Name"
-                name="company-name"
-                onChange={(e) => {
-                  setAgency_name(e.target.value);
-                }}
-                value={Agency_name}
-              />
-            </Grid>
-
-            <Grid container item>
-              <PhoneInput
-                isValid={(value, country) => {
-                  if (value.match(/12345/)) {
-                    return "Invalid value: " + value + ", " + country.name;
-                  } else if (value.match(/1234/)) {
-                    return false;
-                  } else {
-                    return true;
-                  }
-                }}
-                onChange={(phone) => {
-                  set_telephone(phone);
-                }}
-                value={_telephone}
-                required
-              >
-              </PhoneInput>
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="office-address"
-                label="Office Address"
-                id="office-address"
-                value={_Address}
-                onChange={(e) => set_Address(e.target.value)}
-              />
-            </Grid>
-
-            <Grid item xs={12} className="wrap2">
-              <Button variant="contained" component="label" sx = {{background:"#D43F3F",}}>
-                Upload Logo
-                <input
-                  type="file"
-                  name="image"
-                  className="upload-box"
-                  onChange={handleChange_logo}
-                  accept="image/*"
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
                   required
-                  hidden
+                  fullWidth
+                  id="company-name"
+                  label="Company Name"
+                  name="company-name"
+                  onChange={(e) => {
+                    setAgency_name(e.target.value);
+                  }}
+                  value={Agency_name}
                 />
-              </Button>
-              <Typography style={{ marginTop: '6px' }} variant='body2' color='textSecondary'>{fileName}</Typography>
+              </Grid>
+
+              <Grid container item>
+                <PhoneInput
+                  isValid={(value, country) => {
+                    if (value.match(/12345/)) {
+                      return "Invalid value: " + value + ", " + country.name;
+                    } else if (value.match(/1234/)) {
+                      return false;
+                    } else {
+                      return true;
+                    }
+                  }}
+                  onChange={(phone) => {
+                    set_telephone(phone);
+                  }}
+                  value={_telephone}
+                  required
+                >
+                </PhoneInput>
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="office-address"
+                  label="Office Address"
+                  id="office-address"
+                  value={_Address}
+                  onChange={(e) => set_Address(e.target.value)}
+                />
+              </Grid>
+
+              <Grid item xs={12} className="wrap2">
+                <Button variant="contained" component="label" sx={{ background: "#D43F3F", }}>
+                  Upload Logo
+                  <input
+                    type="file"
+                    name="image"
+                    className="upload-box"
+                    onChange={handleChange_logo}
+                    accept="image/*"
+                    required
+                    hidden
+                  />
+                </Button>
+                <Typography style={{ marginTop: '6px' }} variant='body2' color='textSecondary'>{fileName}</Typography>
+              </Grid>
+
             </Grid>
 
-          </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            // color="primary"
-            sx ={{background:"#0B2DAC"}}
-            // className={classes.submit}
-            disabled={loading}
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
+              sx={{
+                background: "#0B2DAC",
+                '&:hover': {
+                  background: "#0B2DAC",
+                  borderRadius: "none"
+                },
+                '&:focus': {
+                  outline: "none",
+                }
+              }}
+              // className={classes.submit}
+              disabled={loading}
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
 
-        </form>
-      </Grid>
+          </form>
+        </Grid>
 
-      {/* <Box mt={5} mb={5}>
+        {/* <Box mt={5} mb={5}>
         <Copyright />
       </Box> */}
 
-    </Container>
+      </Container>
     </div>
   );
 };
