@@ -36,16 +36,16 @@ const ListItemIconStyle = styled(ListItemIcon)({
 
 function NavItem({ item, active }) {
   const theme = useTheme();
-  const currPath = active;
-  const isActiveRoot = currPath === item.path ? true : false
+  const isActiveRoot = active(item.path);
+  // const isActiveRoot = currPath === item.path ? true : false
 
   const { title, path, icon, children } = item;
 
-  const [open, setOpen] = useState(isActiveRoot);
+  // const [open, setOpen] = useState(isActiveRoot);
 
-  const handleOpen = () => {
-    setOpen((prev) => !prev);
-  };
+  // const handleOpen = () => {
+  //   setOpen((prev) => !prev);
+  // };
 
   const activeRootStyle = {
     color: 'primary.main',
@@ -54,10 +54,10 @@ function NavItem({ item, active }) {
     bgcolor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
   };
 
-  const activeSubStyle = {
-    color: 'text.primary',
-    fontWeight: 'fontWeightMedium',
-  };
+  // const activeSubStyle = {
+  //   color: 'text.primary',
+  //   fontWeight: 'fontWeightMedium',
+  // };
 
   return (
     <ListItemStyle
@@ -91,12 +91,13 @@ export default function NavSection({ navConfig }) {
   const { pathname } = useLocation();
 
   const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
+  const match1 = (path) => {console.log(path)};
   { console.log(match, pathname) }
   return (
     <Box >
       <List disablePadding sx={{ p: 1 }}>
         {navConfig.map((item) => (
-          <NavItem key={item.title} item={item} active="/app/dashboard" />
+          <NavItem key={item.title} item={item} active={match} />
         ))}
       </List>
     </Box>
