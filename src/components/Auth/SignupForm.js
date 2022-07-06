@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -12,8 +12,11 @@ import Typography from '@mui/material/Typography';
 // import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
+import Alert from '@mui/material/Alert';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 function Copyright(props) {
@@ -31,14 +34,64 @@ function Copyright(props) {
 
 const SignupForm = () => {
 
-    const handleSubmit = (event) => {
-      
-      };
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConf, setPasswordConf] = useState("");
+    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+  
+    const { signup, logout } = useAuth();
+    const navigate = useNavigate();
+  
+    // Handle Signup submit
+    async function handleSubmit(e) {
+      e.preventDefault();
+  
+      if (password !== passwordConf) {
+        return setError("Passwords do not match");
+      }
+  
+      try {
+        setError("");
+        setLoading(true);
+        await signup(email, password);
+        setMessage("You are successfully Signed Up");
+        
+      } catch (errorMessage) {
+        if (errorMessage.code === "auth/invalid-email")
+          setError("Please try again with a valid e-mail address");
+        else setError(errorMessage.message);
+      }
+  
+      setTimeout(async() => {
+        try {
+          setError("");
+          setLoading(true);
+          await logout();
+          navigate("../login");
+        } catch {
+          setError("Failed to log out");
+        }
+      }, 500);
+  
+      setLoading(false);
+    }
       
     return (
         <>
-            <Box component="form" noValidate onSubmit={handleSubmit} sm={3} md={3} sx={{ mt: '2', alignItems: "center" }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sm={6} md={6} ls = {3} sx = {{mt:1 , maxWidth:"500px"}}>
+                 {/* Errors and messages */}
+            {error && (
+              <Alert style={{ marginBottom: "16px" }} severity="error">
+                {error}
+              </Alert>
+            )}
+            {message && (
+              <Alert style={{ marginBottom: "16px" }} severity="success">
+                {message}
+              </Alert>
+            )}
                 <TextField
                     margin="normal"
                     required
@@ -47,9 +100,11 @@ const SignupForm = () => {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    // autoFocus
-                    // variant="outlined"
                     className="text-field"
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                      value={email}
                 />
                 <TextField
                     margin="normal"
@@ -59,6 +114,10 @@ const SignupForm = () => {
                     label="Password"
                     type="password"
                     className="text-field"
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                      value={password}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -82,6 +141,10 @@ const SignupForm = () => {
                     label="Confirm Password"
                     type="password"
                     className="text-field"
+                    onChange={(e) => {
+                        setPasswordConf(e.target.value);
+                      }}
+                      value={passwordConf}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -102,6 +165,7 @@ const SignupForm = () => {
                 label="Remember me"
               />
               */}
+               {/* <div className="bg-blur-box"></div> */}
                 <Grid container>
                     <Grid item xs>
                         {/* <Link href="#" variant="body2">
@@ -113,7 +177,7 @@ const SignupForm = () => {
                   /> */}
                     </Grid>
                     <Grid item>
-                        <Link href="#" variant="body2">
+                        <Link href="login" variant="body2">
                             {"Already have an account? Log in"}
                         </Link>
                     </Grid>

@@ -20,8 +20,6 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import './login.css';
 
 // import Loginbg from '../../Assets/loginbg.png';
-import Google from '../../Assets/Google.png';
-import Facebook from '../../Assets/Facebook.png';
 
 import SocialAuth from './SocialAuth';
 import LoginForm from './LoginForm';
@@ -44,7 +42,9 @@ export default function Login() {
           md={6}
           sx={{
             backgroundImage: 'url(/assets/loginbg.png)',
-            backgroundSize: 'cover',
+            backgroundSize: "cover",
+            // backgroundRepeat: "round",
+            backgroundColor: "#FAFAFA",
           }}
         >
         </Grid>

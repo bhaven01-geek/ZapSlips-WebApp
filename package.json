@@ -13,7 +13,7 @@
     "@testing-library/user-event": "^12.8.3",
     "clsx": "^1.1.1",
     "file-saver": "^2.0.5",
-    "firebase": "^8.7.1",
+    "firebase": "^8.10.1",
     "formik": "^2.2.9",
     "jszip": "^3.7.0",
     "number-to-words": "^1.2.4",
@@ -54,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1"
   }
 }

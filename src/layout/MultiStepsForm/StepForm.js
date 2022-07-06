@@ -13,12 +13,13 @@ import empData from './EmpTemplate';
 import EmployeeForm from './EmployeeForm';
 import Earnings from './Earnings';
 import Deductions from './Deductions';
+import Submit from './SubmitEmp';
 
 function MultiStepEmpForm() {
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
    
-    const [correct , setCorrect] = React.useState(false);
+    // const [correct , setCorrect] = React.useState(false);
     const [EmpformData, setForm] = useForm(empData);
 
     const handleNext = () => {
@@ -34,7 +35,7 @@ function MultiStepEmpForm() {
         { id: "Employee Detail", element: <EmployeeForm {...props} /> },
         { id: "Earnings", element: <Earnings {...props} /> },
         { id: "Deductions", element: <Deductions {...props} /> },
-        // { id: "submit", element: <Submit {...props} /> },
+        { id: "Theme", element: <Submit {...props} /> },
     ];
     const maxSteps = steps.length;
 

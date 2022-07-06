@@ -19,14 +19,15 @@ import Container from "@mui/material/Container";
 import { Paper } from "@mui/material";
 import { Alert } from "@mui/material";
 import '../components/login.css';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../contexts/AuthContext';
+
 // Update Profile component
 export default function UpdateProfile() {
-    //   const classes = useStyles();
-    //   const history = useHistory();
-    //   const { currentUser, updatePassword, updateEmail } = useAuth();
+    const navigate = useNavigate();
+    const { currentUser, updatePassword, updateEmail } = useAuth();
 
-    //   const [email, setEmail] = useState(currentUser.email);
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState(currentUser.email);
     const [password, setPassword] = useState("");
     const [passwordConf, setPasswordConf] = useState("");
     const [error, setError] = useState("");
@@ -35,39 +36,39 @@ export default function UpdateProfile() {
 
     // handle update profile submit
     async function handleSubmit(e) {
-        // e.preventDefault();
-        // if (password !== passwordConf) {
-        //   return setError("Passwords do not match");
-        // }
+        e.preventDefault();
+        if (password !== passwordConf) {
+            return setError("Passwords do not match");
+        }
 
-        // const promises = [];
-        // setLoading(true);
-        // setError("");
+        const promises = [];
+        setLoading(true);
+        setError("");
 
-        // if (email !== currentUser.email) {
-        //   promises.push(updateEmail(email));
-        // }
-        // if (password) {
-        //   promises.push(updatePassword(password));
-        // }
+        if (email !== currentUser.email) {
+            promises.push(updateEmail(email));
+        }
+        if (password) {
+            promises.push(updatePassword(password));
+        }
 
-        // Promise.all(promises)
-        //   .then(() => {
-        //     setMessage("Account Updated Successfully");
-        //     setTimeout(() => {
-        //       history.push("/");
-        //     }, 1500);
-        //   })
-        //   .catch((err) => {
-        //     if (err.code === "auth/invalid-email") {
-        //       setError("Invalid Email Address")
-        //     }
-        //     else if(err.code === "auth/requires-recent-login") setError("Too many attempts, login again before updating profile")
-        //     else setError(err.message);
-        //   })
-        //   .finally(() => {
-        //     setLoading(false);
-        //   });
+        Promise.all(promises)
+            .then(() => {
+                setMessage("Account Updated Successfully");
+                // setTimeout(() => {
+                //     navigate("/dashboard");
+                // }, 1500);
+            })
+            .catch((err) => {
+                if (err.code === "auth/invalid-email") {
+                    setError("Invalid Email Address")
+                }
+                else if (err.code === "auth/requires-recent-login") setError("Too many attempts, login again before updating profile")
+                else setError(err.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }
 
     return (
@@ -86,7 +87,7 @@ export default function UpdateProfile() {
                     // background:"none",
                 }} >
                     {/* Top form icon */}
-                    <Avatar sx = {{mt:2}}>
+                    <Avatar sx={{ mt: 2 }}>
                         <PersonOutlineOutlinedIcon />
                     </Avatar>
 
@@ -167,7 +168,7 @@ export default function UpdateProfile() {
                             fullWidth
                             variant="contained"
                             // color="primary"
-                            sx ={{background:"#0B2DAC" , }}
+                            sx={{ background: "#0B2DAC", }}
                             //   className={classes.submit}
                             disabled={loading}
                         >
@@ -175,13 +176,13 @@ export default function UpdateProfile() {
                         </Button>
 
                         {/* Links */}
-                        <Grid container justifyContent="flex-end" sx = {{marginTop:"-20px"}}>
+                        {/* <Grid container justifyContent="flex-end" sx={{ marginTop: "-20px" }}>
                             <Grid item>
                                 <Link href="/app/dashboard" variant="body2">
                                     Cancel
                                 </Link>
                             </Grid>
-                        </Grid>
+                        </Grid> */}
 
                     </form>
 

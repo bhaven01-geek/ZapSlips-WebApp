@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, TextField, Grid, Typography, MenuItem, Alert, Box} from "@mui/material";
 import { alpha, styled } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 
 
 const TextFieldStyle = styled(TextField)(({ theme }) => ({
@@ -26,9 +27,11 @@ const Earnings = ({ EmpformData, setForm, handleNext, handleBack }) => {
     common: "",
   }
   const [error, setError] = useState(errorObj);
+  const theme = useTheme();
 
   //checks Required Field is Empty or Not On Submit
   const handleEarningsValidate = () => {
+    console.log("button rrorr occurred")
     if (!BasicSalary) {
       setError({
         common: "Please Fill Required Details"
@@ -167,20 +170,23 @@ const Earnings = ({ EmpformData, setForm, handleNext, handleBack }) => {
         <Grid container spacing={4} direction="column" justifyContent="center" alignItems="center">
 
           <Grid item xs={10} sm={5}>
-            <Button variant="contained" color="secondary"
+            <Button
+            // color="secondary"
+            sx = {{color: '#ffffff', background: "#D43F3F",fontWeight: 500, width: '90px', borderRadius: '5px'}}
               onClick={() => handleBack()}>
               Previous
             </Button>
           </Grid>
 
           <Grid item xs={10} sm={5}>
-            <Button variant="contained"
-             sx={{ color: '#FFFFFF', background: "#0B2DAC", fontWeight: 600, width: '120px', borderRadius: '5px' }}
+            <Button 
+             sx={{ color: '#ffffff', background: "#0B2DAC", fontWeight: 500, width: '90px', borderRadius: '5px' }}
              onClick={() => handleEarningsValidate()}>
               Next
             </Button>
             
           </Grid>
+          
 
         </Grid>
 

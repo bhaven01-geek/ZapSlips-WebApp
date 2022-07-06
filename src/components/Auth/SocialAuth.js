@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 //Material-UI Imports
 import Button from '@mui/material/Button';
@@ -10,14 +10,45 @@ import Divider from '@mui/material/Divider';
 import Google from '../../Assets/Google.png';
 import Facebook from '../../Assets/Facebook.png';
 
+import { provider, Fbprovider } from '../../firebase'
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 const SocialAuth = () => {
+    const [error, setError] = useState("");
+    const { signInGoogle, signInFacebook } = useAuth();
+    const navigate = useNavigate();
+
+    async function handleGoogleLogin(e) {
+        e.preventDefault();
+        try {
+          signInGoogle(provider)
+          navigate("../app/dashboard" , {replace:true});
+        } catch (error) {
+            setError(error);
+        }
+      }
+    
+      async function handleFacebookLogin(e) {
+        e.preventDefault();
+        try {
+          signInFacebook(Fbprovider)
+        } catch (error) {
+            setError(error);
+        }
+      }
+
+
+    
     return (
         <>
-            <Grid item xs sm={6}>
+        <Grid container sx = {{alignItems:"center" , justifyContent:"center"}}>
+
+            <Grid item xs = {4} sm={4} md = {3}  >
 
                 <Button
                     type="submit"
-                    // onClick={handleGoogleLogin}
+                    onClick={handleGoogleLogin}
                     sx={{
                         mt: 3, mb: 2, ml: 1, mr: 1,
                         backgroundColor: '#ffffff'
@@ -26,15 +57,16 @@ const SocialAuth = () => {
                     <img className="signInLogo" src={Google} alt="google" />
                     <Typography variant="p" className="social-tag">Google</Typography>
                 </Button>
-
+                </Grid>
+                <Grid item xs = {4}  sm={4} md ={3} >
                 <Button
                     type="submit"
-                    // onClick={handleFacebookLogin}
+                    onClick={handleFacebookLogin}
                     sx={{
                         mt: 3, mb: 2, ml: 1, mr: 1,
                         backgroundColor: '#ffffff',
-                        border: "1px solid #2A66FF",
-                        borderRadius: '5px'
+                        // border: "1px solid #2A66FF",
+                        // borderRadius: '5px'
                     }}
                 >
                     <img className="signInLogo" src={Facebook} alt="facebook" />
@@ -43,6 +75,7 @@ const SocialAuth = () => {
 
             </Grid>
 
+                    </Grid>
             <Divider sx={{ my: 2 }}>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     OR CONTINUE WITH

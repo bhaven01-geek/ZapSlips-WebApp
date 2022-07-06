@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useRouteMatch } from "react-router-dom";
+import { useLocation, useNavigate,  } from "react-router-dom";
 
 // PDF Themes Configurations
 import themes from "../layout/PayslipThemeConfig.json";
@@ -12,9 +12,9 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 // CHOOSE THEME COMPONENT
 export default function ChooseTheme() {
-  // const location = useLocation();
-  // const props = location.state;
-  // const comps_Data = props.company_Data; // Company Details
+  const location = useLocation();
+  const props = location.state;
+  const comps_Data = props.company_Data; // Company Details
   const defaultTheme = themes.themes[0];
 
   // By Default No theme will be selected
@@ -45,12 +45,12 @@ export default function ChooseTheme() {
   };
 
   // Company Details
-  // let companyDetails = {
-  //   companyName: comps_Data.AgencyName,
-  //   companyAddress: comps_Data.AgencyAddress,
-  //   imageSource: comps_Data.AgencyLogo,
-  //   compantTel: comps_Data.AgencyTelephone,
-  // };
+  let companyDetails = {
+    companyName: comps_Data.AgencyName,
+    companyAddress: comps_Data.AgencyAddress,
+    imageSource: comps_Data.AgencyLogo,
+    compantTel: comps_Data.AgencyTelephone,
+  };
 
   // Theme Setter
   function handleSetThemes(
@@ -77,7 +77,7 @@ export default function ChooseTheme() {
         id="theme-header"
         align="center"
         variant="h4"
-        sx = {{fontWeight:500,}}
+        sx={{ fontWeight: 500, }}
       >
         Select a theme for payslip(s)
       </Typography>
@@ -94,9 +94,9 @@ export default function ChooseTheme() {
                 setter={handleSetThemes}
                 selectedTheme={selectedTheme}
                 setSelectTheme={setSelectedTheme}
-                // data={props}
+                data={props}
                 yourTheme={yourTheme}
-                // companyDetails={companyDetails}
+                companyDetails={companyDetails}
               />
             )
           })}
@@ -108,21 +108,21 @@ export default function ChooseTheme() {
 
 // Creates Theme Div
 const CreateThemeDiv = props => {
-  // const history = useHistory();
+  const navigate = useNavigate();
   // const { path } = useRouteMatch();
   const { bgColor, bgColor2, color0, color1, color2, color3, name } = {
     ...props.theme,
   };
 
   // Will be passed to Generate Slip Component
-  // const yourTheme = props.yourTheme;
-  // const companyDetails = props.companyDetails;
-  // const data = props.data;
+  const yourTheme = props.yourTheme;
+  const companyDetails = props.companyDetails;
+  const data = props.data;
 
   return (
 
 
-    
+
     <div className="theme-container">
 
       {/* PDF Theme Image */}
@@ -152,6 +152,16 @@ const CreateThemeDiv = props => {
           <Button type="submit"
             // variant="containe"
             // color="secondary"
+            onClick={() => {
+              navigate('gen-slip',
+                {
+                  state: {
+                    yourTheme,
+                    data: data,
+                    companyDetails,
+                  },
+                });
+            }}
             sx={{ color: '#FFFFFF', fontWeight: 600, width: '140px', borderRadius: '6px' }}
           >
             {/* <CheckBoxIcon/> */}

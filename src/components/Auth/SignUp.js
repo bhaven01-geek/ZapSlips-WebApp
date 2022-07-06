@@ -7,6 +7,7 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 // import Divider from '@mui/material/Divider';
@@ -37,7 +38,9 @@ export default function SignUp() {
           md={6}
           sx={{
             backgroundImage: 'url(/assets/loginbg.png)',
-            backgroundSize: 'cover',
+            backgroundSize: "cover",
+            // backgroundRepeat: "round",
+            backgroundColor: "#FAFAFA",
           }}
         >
         </Grid>
@@ -60,7 +63,7 @@ export default function SignUp() {
           </Box>
           <Box
             sx={{
-              my: 8,
+              my: 4,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
@@ -68,16 +71,15 @@ export default function SignUp() {
             }}
           >
 
-            <Typography variant="h4" sx={{ color: 'text.secondary' }}>
+          {/* <Typography variant="h4" sx={{ color: 'text.secondary' }}>
               Welcome Back
-            </Typography>
+            </Typography>  */}
             
-            <Typography component="h1" variant="body1">
+            <Typography component="h1" variant="h5">
               Login into your Account
             </Typography>
 
-            <SocialAuth />
-
+            <SocialAuth/>
             <SignupForm />
 
           </Box>

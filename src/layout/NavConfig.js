@@ -33,11 +33,11 @@ const navConfig = [
     path: '/app/updateprofile',
     icon: <FaceOutlinedIcon />,
   },
-  {
-    title: 'Log Out',
-    path: '/logout',
-    icon: <LogoutOutlinedIcon />,
-  },
+  // {
+  //   title: 'Log Out',
+  //   path: '/app/logout',
+  //   icon: <LogoutOutlinedIcon />,
+  // },
 ];
 
 export default navConfig;

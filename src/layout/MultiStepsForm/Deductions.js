@@ -13,6 +13,7 @@ const TextFieldStyle = styled(TextField)(({ theme }) => ({
 
 const Deductions = ({ EmpformData, setForm,  handleNext, handleBack }) => {
 
+    console.log("Dducutip error");
   let errorObj = {
     common: "",
   }
@@ -98,15 +99,16 @@ const Deductions = ({ EmpformData, setForm,  handleNext, handleBack }) => {
 
         <Grid container spacing={4} direction="column" justifyContent="center" alignItems="center">
           <Grid item xs={10} sm={5}>
-            <Button variant="contained" color="seccondary"
+            <Button
+             sx = {{color: '#ffffff', background: "#D43F3F",fontWeight: 500, width: '90px', borderRadius: '5px'}}
               onClick={() => handleBack()}>
               Previous
             </Button>
           </Grid>
 
           <Grid item xs={10} sm={5}>
-            <Button variant="contained"
-             sx={{ color: '#FFFFFF', background: "#0B2DAC", fontWeight: 600, width: '120px', borderRadius: '5px' }}
+            <Button 
+             sx={{color: '#ffffff', background: "#0B2DAC", fontWeight: 600, width: '90px', borderRadius: '5px' }}
             onClick={() => handleDeductionsValidate()}>
               Next
             </Button>

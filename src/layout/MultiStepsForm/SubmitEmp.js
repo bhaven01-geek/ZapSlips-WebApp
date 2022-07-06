@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { firebase } from "../../firebase";
 
-import { useHistory } from "react-router-dom";
-import { Button } from '@material-ui/core';
+import { useNavigate } from "react-router-dom";
+import { Button , Box} from '@mui/material';
 
 
 const Submit = ({ EmpformData }) => {
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const mode = "1";
   const [company_Data, setCompany_Data] = useState({});
 
@@ -43,8 +43,8 @@ const Submit = ({ EmpformData }) => {
 
   const handleTheme = (e) => {
     e.preventDefault();
-    history.replace({
-      pathname: './choosetheme',
+    navigate('../themes',
+      {
       state: {
         EmpformData,
         mode,
@@ -55,12 +55,12 @@ const Submit = ({ EmpformData }) => {
   }
   return (
     <>
-      {<div>
+      {<Box container >
         <Button variant="contained"
           color="secondary"
           onClick={handleTheme}>Choose Theme
         </Button>
-      </div>
+      </Box>
       }
     </>
   );

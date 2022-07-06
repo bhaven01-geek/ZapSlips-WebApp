@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-// import { storage, firebase } from "../firebase";
+import { storage, firebase } from "../firebase";
 import { css } from "@emotion/react";
-// import { useAuth } from "../contexts/AuthContext";
-// import { useHistory } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 import RingLoader from "react-spinners/RingLoader";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -23,6 +23,9 @@ import { CircularProgress, Paper } from "@mui/material";
 import { Alert } from "@mui/material";
 import '../components/login.css';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+
+
+
 const StoreAgencyDetails = () => {
 
   const [fileName, setFileName] = useState("");
@@ -35,11 +38,11 @@ const StoreAgencyDetails = () => {
   const [_Logo, set_Logo] = useState(null);
   const [_Address, set_Address] = useState("");
   let [loading, setLoading] = useState(false);
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   //Get the UID of loggedin User
-  // const { currentUser } = useAuth();
-  // const user_uid = currentUser.uid;
+  const { currentUser } = useAuth();
+  const user_uid = currentUser.uid;
 
   const override = css`
     display: block;
@@ -49,69 +52,68 @@ const StoreAgencyDetails = () => {
 
   const handleSubmit = async (e) => {
 
-    // if (
-    //   _Logo === null ||
-    //   _telephone.length === 0 ||
-    //   Agency_name === "" ||
-    //   _Address === ""
-    // ) {
-    //   setError("Please Fill All Details");
-    // }
+    if (
+      _Logo === null ||
+      _telephone.length === 0 ||
+      Agency_name === "" ||
+      _Address === ""
+    ) {
+      setError("Please Fill All Details");
+    }
 
-    // else {
-    //   setLoading(true);
-    //   e.preventDefault();
+    else {
+      setLoading(true);
+      e.preventDefault();
 
-    //   <RingLoader css={override} size={150} />;
+      <RingLoader css={override} size={150} />;
 
-    //   const Store_Agency = storage
-    //     .ref(`${Agency_name}/${_Logo.name}`)
-    //     .put(_Logo);
-    //   await Store_Agency.on(
-    //     "state_changed",
-    //     (snapshot) => { },
-    //     (error) => {
-    //       setError("Failed, Please Try Again!");
-    //     },
-    //     () => {
-    //       storage
-    //         .ref(`${Agency_name}`)
-    //         .child(_Logo.name)
-    //         .getDownloadURL()
-    //         .then((url) => {
-    //           firebase
-    //             .firestore()
-    //             .collection("users")
-    //             .doc(user_uid)
-    //             .set({
-    //               AgencyName: Agency_name,
-    //               AgencyLogo: url,
-    //               AgencyAddress: _Address,
-    //               AgencyTelephone: _telephone,
-    //               createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    //             })
-    //             .catch(function (error) {
-    //               setError("Failed, Please Try Again!");
-    //             });
-    //         })
-    //         .then(() => {
-    //           setMessage("Successfully Uploaded Company Details");
-    //           history.push('select-mode');
-
-    //         })
-    //         .catch(function (error) {
-    //           setError("Failed, Please Try Again!");
-    //         });
-    //     }
-    //   );
-    // }
+      const Store_Agency = storage
+        .ref(`${Agency_name}/${_Logo.name}`)
+        .put(_Logo);
+      await Store_Agency.on(
+        "state_changed",
+        (snapshot) => { },
+        (error) => {
+          setError("Failed, Please Try Again!");
+        },
+        () => {
+          storage
+            .ref(`${Agency_name}`)
+            .child(_Logo.name)
+            .getDownloadURL()
+            .then((url) => {
+              firebase
+                .firestore()
+                .collection("users")
+                .doc(user_uid)
+                .set({
+                  AgencyName: Agency_name,
+                  AgencyLogo: url,
+                  AgencyAddress: _Address,
+                  AgencyTelephone: _telephone,
+                  createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                })
+                .catch(function (error) {
+                  setError("Failed, Please Try Again!");
+                });
+            })
+            .then(() => {
+              setMessage("Successfully Uploaded Company Details");
+              setLoading(false);
+            })
+            .catch(function (error) {
+              setError("Failed, Please Try Again!");
+            });
+        }
+      );
+    }
   };
 
   const handleChange_logo = (e) => {
-    // setFileName(e.target.files[0].name)
-    // if (e.target.files[0]) {
-    //   set_Logo(e.target.files[0]);
-    // }
+    setFileName(e.target.files[0].name)
+    if (e.target.files[0]) {
+      set_Logo(e.target.files[0]);
+    }
   };
 
   return loading ? (

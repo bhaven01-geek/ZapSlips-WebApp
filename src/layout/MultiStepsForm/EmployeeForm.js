@@ -3,6 +3,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Button, TextField, Grid, Typography, MenuItem, Alert, Box } from "@mui/material";
 import {  styled } from '@mui/material/styles';
+import { currencies } from '../utils/Currency';
 
 
 const TextFieldStyle = styled(TextField)(({ theme }) => ({
@@ -11,40 +12,6 @@ const TextFieldStyle = styled(TextField)(({ theme }) => ({
     }
   }));
 
-
-
-export const currencies = [
-    {
-        value: 'INR',
-        label: '₹ (INR)',
-        name: 'Rupees',
-        symbol: '₹'
-    },
-    {
-        value: 'USD',
-        label: '$ (USD)',
-        name: 'Dollars',
-        symbol: '$'
-    },
-    {
-        value: 'EUR',
-        label: '€ (EUR)',
-        name: 'Euros',
-        symbol: '€'
-    },
-    {
-        value: 'JPY',
-        label: '¥ (JPY)',
-        name: 'Yens',
-        symbol: '¥'
-    },
-    {
-        value: 'GBP',
-        label: '£ (GBP)',
-        name: 'Pounds',
-        symbol: '£'
-    }
-];
 
 const EmployeeForm = ({ EmpformData, setForm, handleNext, handleBack }) => {
 
@@ -305,7 +272,7 @@ const EmployeeForm = ({ EmpformData, setForm, handleNext, handleBack }) => {
                         <Grid item xs={12}>
                             <Button
                                 variant="contained"
-                                sx={{ color: '#FFFFFF', background: "#0B2DAC", fontWeight: 600, width: '120px', borderRadius: '5px' }}
+                                sx={{ background: "#0B2DAC", fontWeight: 600, width: '120px', borderRadius: '5px' }}
                                 onClick={() =>
                                     handleValidate()
                                 }>

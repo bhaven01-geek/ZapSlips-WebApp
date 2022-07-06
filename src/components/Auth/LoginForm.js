@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState}from 'react'
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,11 +10,14 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
+import Alert from '@mui/material/Alert';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
+import { useNavigate } from "react-router-dom";
+// import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+// import { provider, Fbprovider } from '../../firebase'
+import { useAuth } from "../../contexts/AuthContext";
 
 function Copyright(props) {
     return (
@@ -31,13 +34,37 @@ function Copyright(props) {
 
 const LoginForm = () => {
 
-    const handleSubmit = (event) => {
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-      };
+  const navigate = useNavigate();
 
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { login } = useAuth();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log("Hello")
+
+    try {
+      setError("");
+      setLoading(true);
+      await login(email, password);
+      navigate("../app/dashboard" , {replace:true});
+    } catch {
+      setError("The email or password you entered is incorrect.");
+    }
+
+    setLoading(false);
+  }
+ 
     return (
         <>
           <Box component="form" noValidate onSubmit={handleSubmit} sm={6} md={6} sx={{ mt: 1 }}>
+          {error && <Alert severity="error">{error}</Alert>}
+              
               <TextField
                 margin="normal"
                 required
@@ -47,6 +74,8 @@ const LoginForm = () => {
                 name="email"
                 autoComplete="email"
                 className="text-field"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
               <TextField
                 margin="normal"
@@ -56,6 +85,8 @@ const LoginForm = () => {
                 label="Password"
                 type="password"
                 className="text-field"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 InputProps={{ 
                   endAdornment: (
                     <InputAdornment position="end">
@@ -76,19 +107,19 @@ const LoginForm = () => {
                 label="Remember me"
               />
               */}
-              <div className="bg-blur-box"></div>
+              {/* <div className="bg-blur-box"></div> */}
               <Grid container>
                 <Grid item xs>
-                  {/* <Link href="#" variant="body2">
-                    Remember Me
-                  </Link> */}
+                  <Link href="signup" variant="body2">
+                    Don't have an account? Signup
+                  </Link>
                   {/* <FormControlLabel
                     control={<Checkbox value="rememebrr" />}
                     label="Remember me"
                   /> */}
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2" sx={{ color: '#D93F21', textDecorationColor: '#D93F21' }}>
+                  <Link href = "forgot-password" variant="body2" sx={{ color: '#D93F21', textDecorationColor: '#D93F21' }}>
                     {"Recover Password"}
                   </Link>
                 </Grid>
@@ -99,10 +130,11 @@ const LoginForm = () => {
                 variant="outlined"
                 sx={{ mt: 3, mb: 2, border: '1px solid #5A5A5A', color: '#000000' }}
                 className="Button"
+                disabled={loading}
               >
                 Sign In
               </Button>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 4 }} />
             </Box>  
         </>
     )
