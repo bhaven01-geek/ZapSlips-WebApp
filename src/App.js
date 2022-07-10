@@ -23,6 +23,7 @@ import PrivateRoute from './PrivateRoute';
 import GenerateSlip from './components/GenerateSlip';
 import ForgotPassword from './pages/ForgotPassword';
 import Logout from './components/Auth/Logout';
+import { DashboardProvider } from './components/DashboardData';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
 
       <BrowserRouter>
         <AuthProvider>
+          <DashboardProvider>
           <Routes>
             <Route path='/' element={<Header />} />
             <Route path='login' element={<Login />} />
@@ -51,6 +53,7 @@ function App() {
               <Route path='logout' element={<Logout />} />
             </Route>
           </Routes>
+          </DashboardProvider>
         </AuthProvider>
       </BrowserRouter>
       {/* </ThemeProvider> */}

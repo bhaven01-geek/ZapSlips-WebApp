@@ -16,7 +16,7 @@ const Logout = () => {
     try {
       await logout();
       console.log("doing");
-      navigate("../login");
+      navigate("../../login");
       console.log("done");
     } catch {
       console.log("error");

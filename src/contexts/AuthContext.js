@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
 
   // Signup
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email,password);
   }
 
   // Login
@@ -29,9 +29,9 @@ export function AuthProvider({ children }) {
     return auth.signOut();
   }
 
-  // Reset Password
-  function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email);
+  // Reset 
+  function reset(email) {
+    return auth.sendResetEmail(email);
   }
 
   // Update Email
@@ -39,9 +39,9 @@ export function AuthProvider({ children }) {
     return currentUser.updateEmail(email);
   }
 
-  // Update Password
-  function updatePassword(password) {
-    return currentUser.updatePassword(password);
+  // Update 
+  function update() {
+    return currentUser.update();
   }
 
   // Sign In With Google
@@ -69,9 +69,9 @@ export function AuthProvider({ children }) {
     signup,
     logout,
     login,
-    resetPassword,
+    reset,
     updateEmail,
-    updatePassword,
+    update,
     signInGoogle,
     signInFacebook
   };

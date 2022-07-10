@@ -6,6 +6,7 @@ import { Box, Stack, AppBar, Toolbar, IconButton, Typography } from '@mui/materi
 // import Iconify from '../../components/Iconify';
 
 import { MenuSharp } from '@mui/icons-material';
+import AccountPopover from './MainComponents/AccountPopover';
 
 
 const DRAWER_WIDTH = 260;
@@ -44,7 +45,6 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         <IconButton onClick={onOpenSidebar} sx={{ mr: 1, color: '#FFFFFF', display: { lg: 'none' } }}>
           {/* <Iconify icon="eva:menu-2-fill" /> */}
           <MenuSharp />
-
         </IconButton>
         <Typography variant='h6'>Welcome, Taylor </Typography>
 
@@ -53,11 +53,13 @@ export default function DashboardNavbar({ onOpenSidebar }) {
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
           {/* <Typography variant = 'h5'>Taylor</Typography> */}
-          <Box
+          {/* <Box
             component="img"
             src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
             sx={{ width: '50px', height: '50px' }}
-          />
+          /> */}
+        <AccountPopover />
+
         </Stack>
       </ToolbarStyle>
     </RootStyle>

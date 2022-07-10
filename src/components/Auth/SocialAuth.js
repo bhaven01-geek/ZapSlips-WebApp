@@ -22,10 +22,11 @@ const SocialAuth = () => {
     async function handleGoogleLogin(e) {
         e.preventDefault();
         try {
-          signInGoogle(provider)
+          await signInGoogle(provider)
           navigate("../app/dashboard" , {replace:true});
         } catch (error) {
             setError(error);
+            console.log(error);
         }
       }
     

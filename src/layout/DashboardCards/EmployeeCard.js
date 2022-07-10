@@ -1,7 +1,11 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 
-export const EmployeeCard = () => {
+export const EmployeeCard = ({CardsData}) => {
+    
+    const vals = Object.values(CardsData);
+    const noOfEmps = vals[0] ? vals[0].EmployeeCount : 0;
+
     return (
         <>
                 {/* <Typography variant='h5' sx={{ fontWeight: 600, p: 2 , ml:1 }}>Employees </Typography> */}
@@ -12,7 +16,7 @@ export const EmployeeCard = () => {
             }}>
                 <Box container  sx={{ p: 2 }}>
                     <Typography sx = {{fontSize: "20px", fontWeight: 600, mt: 1, mb:2 , color:"#5837AB" }}>No of Employee(s)</Typography>
-                    <Typography sx = {{my:2}}>226</Typography>
+                    <Typography sx = {{my:2}}>{noOfEmps}</Typography>
                 </Box>
             </Box>
         </>

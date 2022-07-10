@@ -34,16 +34,20 @@ function Copyright(props) {
 
 const LoginForm = () => {
 
+  const { login } = useAuth();
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const [showPassword, setshowPassword] = useState(false);
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  
+  const handleClickShowPassword = () => {setshowPassword(!showPassword)}
 
-  const { login } = useAuth();
+
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("Hello")
@@ -53,8 +57,9 @@ const LoginForm = () => {
       setLoading(true);
       await login(email, password);
       navigate("../app/dashboard" , {replace:true});
-    } catch {
-      setError("The email or password you entered is incorrect.");
+    } catch(error) {
+      console.log(error)
+      setError("The email or password you entered is incorrect." , error);
     }
 
     setLoading(false);
@@ -83,7 +88,7 @@ const LoginForm = () => {
                 fullWidth
                 name="password"
                 label="Password"
-                type="password"
+                type={showPassword ? "text":"password"}
                 className="text-field"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
@@ -92,11 +97,17 @@ const LoginForm = () => {
                     <InputAdornment position="end">
                       <IconButton
                         aria-label="toggle password visibility"
-                      // onClick={handleClickShowPassword}
+                        sx = {{
+                          '&:focus':{
+                            border:"none",
+                            outline:"none"
+                          },
+                        }}
+                      onClick={handleClickShowPassword}
                       // onMouseDown={handleMouseDownPassword}
                       >
                         {/* // Instead of true show password value will come */}
-                        {false ? <Visibility /> : <VisibilityOff />}
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
                     </InputAdornment>
                   )

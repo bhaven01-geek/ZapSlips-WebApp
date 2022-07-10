@@ -21,13 +21,14 @@ function DocumentCreater(props) {
   const { companyDetails, deductions, employeeDetails, earnings, currency } = {
     ...props,
   };
-  
+
   let currencyForPaySlip = currencies[0]; // currency initialized to INR
+
 
   currencies.forEach(element => {
     // if currency came as argument found in currencies change currency
     if (currency === element.value) {
-      currencyForPaySlip = element   
+      currencyForPaySlip = element
     }
   });
 
@@ -158,9 +159,9 @@ function DocumentCreater(props) {
   const MyDocument = () => (
 
     <Document>
-      
+
       <Page size="A4" style={styles.page}>
-        
+
         {/* View is like DIV of HTML in react-pdf*/}
         <View
           style={
@@ -232,7 +233,7 @@ function DocumentCreater(props) {
               <View style={styles.hardCoded}>
                 {employeeDetails.map((data, index) => {
                   return data.title || data.title !== undefined ? (
-                    <Text key={index+'emp-details-title'}
+                    <Text key={index + 'emp-details-title'}
                       style={{
                         marginBottom: "6px",
                         fontSize: "10px",
@@ -249,7 +250,7 @@ function DocumentCreater(props) {
               <View style={styles.details}>
                 {employeeDetails.map((data, index) => {
                   return (
-                    <Text key={index+'emp-details-value'}
+                    <Text key={index + 'emp-details-value'}
                       style={{
                         color: props.color3,
                         marginBottom: "6px",
@@ -259,8 +260,8 @@ function DocumentCreater(props) {
                       {"   :   "}
                       {
                         data.value && data.value !== undefined && data.value !== ''
-                        ? data.value 
-                        : 0
+                          ? data.value
+                          : 0
                       }
                     </Text>
                   );
@@ -271,7 +272,7 @@ function DocumentCreater(props) {
 
             {/* NETSALARY VIEW */}
             <View style={styles.netSalaryCss}>
-              
+
               <View style={styles.containerSalary}>
                 <Text style={{ whiteSpace: "nowrap", color: "grey" }}>
                   Employee Net Pay
@@ -296,7 +297,7 @@ function DocumentCreater(props) {
           {/* EARNIGS AND DEDUCTIONS HEADER SECTION */}
           <View style={styles.earningHeader}>
             <Text style={{ width: "25%", color: props.color1 }}>EARNINGS</Text>
-            
+
             <Text
               style={{
                 textAlign: "right",
@@ -321,7 +322,7 @@ function DocumentCreater(props) {
 
           {/* EARNING AND DEDUCTION SECTION */}
           <View style={styles.earningCss}>
-            
+
             {/* EARNINGS TITLES */}
             <View
               style={(styles.cloumn, { width: "25%" })}
@@ -329,7 +330,7 @@ function DocumentCreater(props) {
             >
               {earnings.map((data, index) => {
                 return data.title || data.title !== undefined ? (
-                  <Text key={index+ 'earn-title'}
+                  <Text key={index + 'earn-title'}
                     style={
                       (styles.tableText,
                       {
@@ -349,13 +350,13 @@ function DocumentCreater(props) {
             <View
               style={
                 (styles.cloumn,
-                { width: "25%", textAlign: "right", marginRight: "30px" })
+                  { width: "25%", textAlign: "right", marginRight: "30px" })
               }
               className="earnings-value"
             >
               {earnings.map((data, index) => {
                 return (
-                  <Text key={index+ 'earn-value'}
+                  <Text key={index + 'earn-value'}
                     style={
                       (styles.tableText,
                       {
@@ -365,10 +366,10 @@ function DocumentCreater(props) {
                       })
                     }
                   >
-                    { 
+                    {
                       data.value && data.value !== undefined && data.value !== '-' && data.value !== ''
-                      ? `${currencyForPaySlip.symbol} ${data.value}`
-                      : 0
+                        ? `${currencyForPaySlip.symbol} ${data.value}`
+                        : 0
                     }
                   </Text>
                 );
@@ -382,7 +383,7 @@ function DocumentCreater(props) {
             >
               {deductions.map((data, index) => {
                 return data.title || data.title !== undefined ? (
-                  <Text key={index+ 'ded-title'}
+                  <Text key={index + 'ded-title'}
                     style={
                       (styles.tableText,
                       {
@@ -405,7 +406,7 @@ function DocumentCreater(props) {
             >
               {deductions.map((data, index) => {
                 return (
-                  <Text key={index+ 'ded-value'}
+                  <Text key={index + 'ded-value'}
                     style={
                       (styles.tableText,
                       {
@@ -415,10 +416,10 @@ function DocumentCreater(props) {
                       })
                     }
                   >
-                    { 
+                    {
                       data.value && data.value !== undefined && data.value !== '-' && data.value !== ''
-                      ? `${currencyForPaySlip.symbol} ${data.value}`
-                      : 0
+                        ? `${currencyForPaySlip.symbol} ${data.value}`
+                        : 0
                     }
                   </Text>
                 );
@@ -428,7 +429,7 @@ function DocumentCreater(props) {
 
           {/* GROSS SECTION */}
           <View style={styles.earningSectionTotal} id="earning-section-total">
-            
+
             {/* GROSS EARNINGS */}
             <Text style={{ color: props.color1, width: "25%" }}>
               Gross Earnings
@@ -458,7 +459,7 @@ function DocumentCreater(props) {
 
           {/* NET PAYABLE SECTION */}
           <View style={styles.netPayable} className="net-payable">
-            
+
             <Text
               style={{
                 color: props.color1,
@@ -468,7 +469,7 @@ function DocumentCreater(props) {
             >
               {`Total Net Payable : `} {currencyForPaySlip.symbol}{netSalary} /-{" "}
             </Text>
-            
+
             <Text style={{ fontSize: "11.5px", color: "#7579E7" }}>
               {`( ${currencyForPaySlip.name} ${capitalizeFirstLetter(
                 converter.toWords(parseInt(netSalary))

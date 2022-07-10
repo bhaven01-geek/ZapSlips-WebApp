@@ -1,8 +1,7 @@
 // import react from 'react';
 import { Avatar, Box, Typography, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import shieldImg from '../../Assets/ShieldCheck.png';
-
+import percentImg from '../../Assets/Percent.png';
 
 const BoxStyle = styled(Box)(({ theme }) => ({
     width: "280px",
@@ -20,21 +19,22 @@ const BoxStyle = styled(Box)(({ theme }) => ({
 }));
 
 const cssStyle = {
-    background: "#EAFFEF",
-    avatarBg: "#C2FFD2",
-    color: "#00A82C",
-    // avatar: shieldImg,
-    content: 'Advance Salary',
+    background: "#FBE8DC",
+    avatarBg: "#FFD9AF",
+    color: "#CA6D07",
+    // avatar: percentImg,
+    content: "TDS Deductions"
 }
 
-const AdvanceSalary = ({ CardsData }) => {
 
+const TaxDeductions = ({ CardsData }) => {
     const vals = Object.values(CardsData);
-    const _AdvanceSalary = vals[0] ? vals[0].AdvanceSalary.toLocaleString() : 0;
+    const TaxDeductions = vals[0] ? vals[0].TDS.toLocaleString() : 0;
 
     return (
         <>
-            <BoxStyle sx={{ background: cssStyle.background, }}>
+
+            <BoxStyle sx={{ background:cssStyle.background, }}>
                 <Box sx={{ mr: 2, pl: 4 }}>
 
                     <Avatar
@@ -44,7 +44,7 @@ const AdvanceSalary = ({ CardsData }) => {
                             // height: '44px',
                             // ...theme.typography.largeAvatar,
 
-                            backgroundColor: cssStyle.avatarBg,
+                            backgroundColor:cssStyle.avatarBg,
                             cursor: 'pointer',
                             mt: 4,
                             p: 1,
@@ -53,13 +53,13 @@ const AdvanceSalary = ({ CardsData }) => {
 
                         }}
                     >
-                        <img src={shieldImg} alt="PF" />
+                        <img src={percentImg} alt="PF" />
                     </Avatar>
                     <Typography sx={{ fontSize: '1.2rem', fontWeight: 400, mt: 1, mb: 0.75, color: cssStyle.color }}>
                         {cssStyle.content}
                     </Typography>
                     <Typography sx={{ fontSize: '1rem', fontWeight: 600, mr: 1, mt: 1, mb: 4, }}>
-                        {`$${_AdvanceSalary}`}
+                        {`$${TaxDeductions}`}
                     </Typography>
                 </Box>
             </BoxStyle>
@@ -70,4 +70,4 @@ const AdvanceSalary = ({ CardsData }) => {
 }
 
 
-export default AdvanceSalary;
+export default TaxDeductions;

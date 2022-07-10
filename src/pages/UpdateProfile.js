@@ -18,6 +18,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Paper } from "@mui/material";
 import { Alert } from "@mui/material";
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
 import '../components/login.css';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
@@ -33,6 +36,9 @@ export default function UpdateProfile() {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showPassword, setshowPassword] = useState(false);
+    const handleClickShowPassword = () => {setshowPassword(!showPassword)};
+
 
     // handle update profile submit
     async function handleSubmit(e) {
@@ -135,11 +141,31 @@ export default function UpdateProfile() {
                                     fullWidth
                                     name="password"
                                     label="Password"
-                                    type="password"
+                    type={showPassword ? "text": "password"}
                                     id="password"
                                     placeholder="Leave blank to keep the same"
                                     onChange={(e) => {
                                         setPassword(e.target.value);
+                                    }}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    sx = {{
+                                                      '&:focus':{
+                                                        border:"none",
+                                                        outline:"none"
+                                                      }
+                                                    }}
+                                                onClick={handleClickShowPassword}
+                                                // onMouseDown={handleMouseDownPassword}
+                                                >
+                                                    {/* // Instead of true show password value will come */}
+                                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        )
                                     }}
                                     value={password}
                                 />
@@ -151,13 +177,34 @@ export default function UpdateProfile() {
                                     fullWidth
                                     name="confirm-password"
                                     label="Confirm Password"
-                                    type="password"
+                                    type={showPassword ? "text": "password"}
                                     id="confirm-password"
                                     placeholder="Leave blank to keep the same"
                                     onChange={(e) => {
                                         setPasswordConf(e.target.value);
                                     }}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    sx = {{
+                                                      '&:focus':{
+                                                        border:"none",
+                                                        outline:"none"
+                                                      }
+                                                    }}
+                                                onClick={handleClickShowPassword}
+                                                // onMouseDown={handleMouseDownPassword}
+                                                >
+                                                    {/* // Instead of true show password value will come */}
+                                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        )
+                                    }}
                                     value={passwordConf}
+                                    
                                 />
                             </Grid>
 

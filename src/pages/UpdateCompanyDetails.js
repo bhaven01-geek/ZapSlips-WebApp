@@ -65,8 +65,6 @@ const StoreAgencyDetails = () => {
       setLoading(true);
       e.preventDefault();
 
-      <RingLoader css={override} size={150} />;
-
       const Store_Agency = storage
         .ref(`${Agency_name}/${_Logo.name}`)
         .put(_Logo);
@@ -116,9 +114,7 @@ const StoreAgencyDetails = () => {
     }
   };
 
-  return loading ? (
-    <CircularProgress color="secondary" />
-  ) : (
+  return (
     <div className="details-cont">
       <Container component="main" maxWidth="xs" sx={{ gap: "25px" }}>
         <CssBaseline />
@@ -150,6 +146,9 @@ const StoreAgencyDetails = () => {
               <Alert style={{ marginBottom: "16px" }} severity="success">
                 {message}
               </Alert>
+            )}
+              {loading && (
+                  <CircularProgress color="primary" />
             )}
 
             <Grid container spacing={2}>

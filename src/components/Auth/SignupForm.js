@@ -40,10 +40,13 @@ const SignupForm = () => {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showPassword, setshowPassword] = useState(false);
   
     const { signup, logout } = useAuth();
     const navigate = useNavigate();
   
+    const handleClickShowPassword = () => {setshowPassword(!showPassword)};
+
     // Handle Signup submit
     async function handleSubmit(e) {
       e.preventDefault();
@@ -78,6 +81,7 @@ const SignupForm = () => {
       setLoading(false);
     }
       
+
     return (
         <>
             <Box component="form" noValidate onSubmit={handleSubmit} sm={6} md={6} ls = {3} sx = {{mt:1 , maxWidth:"500px"}}>
@@ -112,7 +116,7 @@ const SignupForm = () => {
                     fullWidth
                     name="password"
                     label="Password"
-                    type="password"
+                    type={showPassword ? "text": "password"}
                     className="text-field"
                     onChange={(e) => {
                         setPassword(e.target.value);
@@ -123,15 +127,22 @@ const SignupForm = () => {
                             <InputAdornment position="end">
                                 <IconButton
                                     aria-label="toggle password visibility"
-                                // onClick={handleClickShowPassword}
+                                    sx = {{
+                                      '&:focus':{
+                                        border:"none",
+                                        outline:"none"
+                                      }
+                                    }}
+                                onClick={handleClickShowPassword}
                                 // onMouseDown={handleMouseDownPassword}
                                 >
                                     {/* // Instead of true show password value will come */}
-                                    {false ? <Visibility /> : <VisibilityOff />}
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
                                 </IconButton>
                             </InputAdornment>
                         )
                     }}
+                   
                 />
                 <TextField
                     margin="normal"
@@ -139,7 +150,7 @@ const SignupForm = () => {
                     fullWidth
                     name="confirm password"
                     label="Confirm Password"
-                    type="password"
+                    type={showPassword ? "text":"password"}
                     className="text-field"
                     onChange={(e) => {
                         setPasswordConf(e.target.value);
@@ -150,15 +161,22 @@ const SignupForm = () => {
                             <InputAdornment position="end">
                                 <IconButton
                                     aria-label="toggle password visibility"
-                                // onClick={handleClickShowPassword}
+                                    sx = {{
+                                      '&:focus':{
+                                        border:"none",
+                                        outline:"none"
+                                      },
+                                    }}
+                                onClick={handleClickShowPassword}
                                 // onMouseDown={handleMouseDownPassword}
                                 >
                                     {/* // Instead of true show password value will come */}
-                                    {false ? <Visibility /> : <VisibilityOff />}
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
                                 </IconButton>
                             </InputAdornment>
                         )
                     }}
+                    
                 />
                 {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

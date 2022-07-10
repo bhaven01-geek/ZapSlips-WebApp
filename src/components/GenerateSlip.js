@@ -17,15 +17,31 @@ import {
 // Components and templates
 import { earnings, employeeDetails, deductions } from "../layout/utils/TemplateData";
 import { GetCols } from "./ExcelData";
-
+import {getGross , checkNumeric} from './helper/UtilitySalary'
+import {useDashboard} from './DashboardData';
 // GenerateSlip Component
 function GenerateSlip() {
+
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [createDocProgress, setCreateDocProgress] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("");
   const location = useLocation();
   const props = location.state;
+  const {storePayData} = useDashboard();
+
+  //Dasboard Data 
+  const currYearData = {
+
+    BasicSalary: 0,
+    PF: 0,
+    AdvanceSalary: 0,
+    TDS: 0,
+    NetPay: 0,
+    EmployeeCount: 0,
+
+  }
+
 
   // To Generate Single Slip
   function generateOneSlip(slipInfo) {
@@ -50,6 +66,17 @@ function GenerateSlip() {
     deductions[0].value = employeeData.ProvidentFund;
     deductions[1].value = employeeData.AdvanceSalary;
     deductions[2].value = employeeData.TDS;
+
+
+    //Dashboard Data
+    currYearData.BasicSalary = checkNumeric(earnings[0])
+    currYearData.PF = checkNumeric(deductions[0]);
+    currYearData.AdvanceSalary = checkNumeric(deductions[1]);
+    currYearData.TDS = checkNumeric(deductions[2]);
+    currYearData.EmployeeCount = 1;
+
+    //NetSalary for DashboardData
+    currYearData.NetPay = getGross(earnings) - getGross(deductions);
 
     // employee details
     employeeDetails[0].value = employeeData.EmployeeName;
@@ -94,13 +121,16 @@ function GenerateSlip() {
     );
     const result = blobPdf.toBlob();
 
-    // save blob as pdf
-    result.then((r) => {
-      saveAs(
-        r,
-        `ID-${employeeDetails[6].value}-${employeeDetails[0].value}-ZapSlip.pdf`
-      );
+     // useEffect(() => {
+       // }, []);
+       // save blob as pdf
+       result.then((r) => {
+         saveAs(
+           r,
+           `ID-${employeeDetails[6].value}-${employeeDetails[0].value}-ZapSlip.pdf`
+           );
       // FILE NAME -> ID-{Employee id}-{Employee name}-ZapSlip.pdf
+      storePayData(currYearData);
     });
     setLoading(false);
   }
@@ -123,8 +153,15 @@ function GenerateSlip() {
       let timerINCR = 500; // timer increment
       setLoadingMessage("Creating payslips from data ...");
 
+
+
+      //For storing Dashboard Data
+      currYearData.EmployeeCount = totalEmployees;
+
+      //NetSalary for DashboardData
+
       employees.forEach((employee, indx) => {
-        
+
         // increment timer on each iteration
         timer = timer + timerINCR;
 
@@ -136,7 +173,13 @@ function GenerateSlip() {
         );
         const currency = unFilteredEmployeeDetails[11].value;
         const deductions = employee.deductions;
-        
+
+        //for Storing Dasboard Data NetPay
+        currYearData.NetPay += getGross(earnings) - getGross(deductions);
+        currYearData.BasicSalary += checkNumeric(earnings[0])
+        currYearData.PF += checkNumeric(deductions[0]);
+        currYearData.AdvanceSalary += checkNumeric(deductions[1]);
+        currYearData.TDS += checkNumeric(deductions[2]);
         // Will be passed to document creator
         const values = {
           ...theme,
@@ -147,6 +190,7 @@ function GenerateSlip() {
           currency,
         };
 
+        
         // set timer
         setTimeout(() => {
 
@@ -169,16 +213,17 @@ function GenerateSlip() {
 
           // Push blob promise in promise Array
           promiseARR.push(result);
-          
+
           // If this is the last promise
           if (indx === employees.length - 1) {
+            storePayData(currYearData);
             makeBlobArrayFromPromises(promiseARR, employees, totalEmployees);
           }
         }, timer);
 
       });
 
-    }, 1000);
+    }, 200);
 
   }
 

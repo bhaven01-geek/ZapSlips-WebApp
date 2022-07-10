@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 //
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
+import { DashboardProvider } from '../components/DashboardData';
 
 // ------------------MAIN-LAYOUT ----------------------------------------------------
 
@@ -42,7 +43,9 @@ export default function DashboardLayout() {
       <DashboardNavbar onOpenSidebar={() => setOpen(true)} />
       <DashboardSidebar isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} />
       <MainStyle>
+      {/* <DashboardProvider> */}
         <Outlet />
+        {/* </DashboardProvider> */}
       </MainStyle>
     </RootStyle>
   );

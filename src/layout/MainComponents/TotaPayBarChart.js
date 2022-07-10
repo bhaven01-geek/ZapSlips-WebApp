@@ -15,23 +15,11 @@ import Chart from 'react-apexcharts';
 import MainCard from './MainCard';
 // chart data
 import chartData from '../chartData/total-pay-barChart';
+import Dashboard from './Dashboard';
 const gridSpacing = 3;
 
 
-const status = [
-    {
-        value: 2022,
-        label: '2022'
-    },
-    {
-        value: 2021,
-        label: '2021'
-    },
-    {
-        value: 2020,
-        label: '2020'
-    }
-];
+
 // ==============================|| DASHBOARD DEFAULT - TOTAL GROWTH BAR CHART ||============================== //
 const CardWrapper = styled('div')(({ theme }) => ({
 
@@ -46,7 +34,26 @@ const CardWrapper = styled('div')(({ theme }) => ({
 const TotalPayBarChart = ({ isLoading }) => {
     const [value, setValue] = useState('today');
     const theme = useTheme();
+    // let GraphDataArray = Dashboard.Year;
+    // let menuItemlen = GraphData.length;
 
+
+    const status = [
+        {
+            value: 2022,
+            label: '2022'
+        },
+        {
+            value: 2021,
+            label: '2021'
+        },
+        {
+            value: 2020,
+            label: '2020'
+        }
+    ];
+
+    // let GraphN = Dashboard.Year;
     // const primary = "#bdc8f0";
     // const darkLight = "#bdc8f0";
     // const grey200 = "#eeeeee";
@@ -106,7 +113,7 @@ const TotalPayBarChart = ({ isLoading }) => {
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Grid container alignItems="center" justifyContent="space-between">
-                            <Grid item>
+                            {/* <Grid item>
                                 <Grid container direction="column" spacing={1}>
                                     <Grid item>
                                         <Typography variant="subtitle2">Total Salary Paid</Typography>
@@ -115,7 +122,7 @@ const TotalPayBarChart = ({ isLoading }) => {
                                         <Typography variant="h4">$2,324.00</Typography>
                                     </Grid>
                                 </Grid>
-                            </Grid>
+                            </Grid> */}
                             <Grid item>
                                 <TextField
                                     id="Filter By Time "
