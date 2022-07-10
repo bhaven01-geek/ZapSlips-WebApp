@@ -43,9 +43,6 @@ const Dashboard = () => {
                 const obj = {
                     ...querySnapshot.data(),
                 }
-
-                console.log(obj);
-                console.log(DasboardData);
                 if (obj.Year != undefined) {
                     setDasboardData(obj.Year);
 
@@ -63,7 +60,7 @@ const Dashboard = () => {
                 return obj;
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
             });
     };
     useEffect(() => {

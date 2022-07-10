@@ -26,7 +26,7 @@ const SocialAuth = () => {
           navigate("../app/dashboard" , {replace:true});
         } catch (error) {
             setError(error);
-            console.log(error);
+            // console.log(error);
         }
       }
     

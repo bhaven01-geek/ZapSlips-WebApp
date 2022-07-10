@@ -31,7 +31,6 @@ const Earnings = ({ EmpformData, setForm, handleNext, handleBack }) => {
 
   //checks Required Field is Empty or Not On Submit
   const handleEarningsValidate = () => {
-    console.log("button rrorr occurred")
     if (!BasicSalary) {
       setError({
         common: "Please Fill Required Details"

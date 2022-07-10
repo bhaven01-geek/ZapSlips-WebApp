@@ -22,7 +22,6 @@ export const DashboardProvider = ({ children }) => {
 
         if (currentUser.uid != undefined) {
             const user_uid = currentUser.uid;
-            console.log("Dasboard datata");
             const dbref = firebase.firestore().collection("users").doc(user_uid);
             const Dashbobj = {
                 [`${nowYear}`]: currYearData,
@@ -48,19 +47,11 @@ export const DashboardProvider = ({ children }) => {
         }
 
         const storeSummary = (compData, sumData, dbref) => {
-            console.log(compData);
             if (compData.Year != undefined) {
 
                 compData.Year.map((data, index) => {
-                    console.log(Object.keys(sumData) === Object.keys(data));
-                    console.log(Object.keys(sumData));
                     if (Object.keys(sumData)[0] === Object.keys(data)[0]) {
 
-                        console.log("myData", Object.values(sumData));
-                        console.log("Firebase Data", Object.values(data));
-                        console.log("myData obj", sumData);
-                        console.log("firebase Obj", data);
-                        console.log("Firebase Data keys values", Object.keys(data));
                         let summary_Vals = Object.values(sumData)[0];
                         let Data_Vals = Object.values(data)[0];
 
@@ -108,7 +99,6 @@ export const DashboardProvider = ({ children }) => {
                 })
             }
             else {
-                console.log(PayYears.push(sumData));
                 dbref
                     .set({
                         Year: PayYears,
