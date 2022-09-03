@@ -10,7 +10,7 @@ import {
   Svg
 } from "@react-pdf/renderer";
 
-import { getMonth, getYear } from "../layout/utils/DateMonth";
+import { getYear } from "../layout/utils/DateMonth";
 import converter from "number-to-words";
 import font from "../fonts/NotoSans-Regular.ttf";
 import React from "react";
@@ -18,10 +18,9 @@ import { currencies } from "../layout/utils/Currency";
 
 // function to create PDF blob of document
 function DocumentCreater(props) {
-  const { companyDetails, deductions, employeeDetails, earnings, currency } = {
+  const { companyDetails, deductions, employeeDetails, earnings, currency , MonthName } = {
     ...props,
   };
-
   let currencyForPaySlip = currencies[0]; // currency initialized to INR
 
 
@@ -211,7 +210,7 @@ function DocumentCreater(props) {
               fontSize: "15px",
             }}
           >
-            Payslip for the month of {`${getMonth()}, ${getYear()}`}
+            Payslip for the month of {`${MonthName}, ${getYear()}`}
           </Text>
 
           <Text
