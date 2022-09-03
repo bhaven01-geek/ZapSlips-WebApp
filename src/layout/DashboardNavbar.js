@@ -46,7 +46,7 @@ export default function DashboardNavbar({ onOpenSidebar }) {
           {/* <Iconify icon="eva:menu-2-fill" /> */}
           <MenuSharp />
         </IconButton>
-        <Typography variant='h6'>Welcome, Taylor </Typography>
+        <Typography variant='h6'>Welcome</Typography>
 
         {/* <Searchbar /> */}
         <Box sx={{ flexGrow: 1 }} />

@@ -31,7 +31,7 @@ const Submit = ({ EmpformData }) => {
         return obj;
       })
       .catch(function (error) {
-        // console.log(error);
+        console.log(error);
       });
   };
 

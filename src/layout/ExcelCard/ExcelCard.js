@@ -94,7 +94,7 @@ const ExcelCard = () => {
                                     alt="ExcelFile"
                                 />
                                 <Typography variant="body1" color='textPrimary' sx={{ mt: 2 }}>
-                                    Done filling the template. Upload Here to get instant payslips.oad Here to get instant payslips.
+                                    Done filling the template. Upload Here to get instant payslips.
                                 </Typography>
                             </CardContent>
 

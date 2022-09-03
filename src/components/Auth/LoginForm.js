@@ -50,12 +50,15 @@ const LoginForm = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log("Hello")
+
     try {
       setError("");
       setLoading(true);
       await login(email, password);
       navigate("../app/dashboard" , {replace:true});
     } catch(error) {
+      console.log(error)
       setError("The email or password you entered is incorrect." , error);
     }
 

@@ -13,6 +13,7 @@ const TextFieldStyle = styled(TextField)(({ theme }) => ({
 
 const Deductions = ({ EmpformData, setForm,  handleNext, handleBack }) => {
 
+    console.log("Dducutip error");
   let errorObj = {
     common: "",
   }

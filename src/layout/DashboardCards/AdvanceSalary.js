@@ -28,6 +28,7 @@ const cssStyle = {
 }
 
 const AdvanceSalary = ({ CardsData }) => {
+
     const vals = Object.values(CardsData);
     const _AdvanceSalary = vals[0] ? vals[0].AdvanceSalary.toLocaleString() : 0;
 

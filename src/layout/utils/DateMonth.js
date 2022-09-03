@@ -54,4 +54,4 @@ export const getMonth = () => {
 };
 export const getYear = () => {
   return date.getFullYear();
-};
+}

@@ -12,10 +12,10 @@ const PayslipMode = () => (
     <Container maxWidth="xl">
         <Grid container spacing={gridSpacing} justifyContent="space-between" alignItems="center">
             <Grid item xs={12} sm={12} md={6}>
-                <SelectMode bgcolor="#FFFFFF" text="Single Employee" btnColor="#0B2DAC" icon={PersonPin} url='/employee' />
+                <SelectMode bgcolor="#FFFFFF" text="Single Employee" paraText="Generate a single payslip as pdf by manually giving input for employee details, earnings, etc" btnColor="#0B2DAC" icon={PersonPin} url='/employee' />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-                <SelectMode bgcolor="#FFFFFF" text="Multiple Employee" btnColor="#0B2DAC" icon={PeopleAltOutlined}  url='/excel'/>
+                <SelectMode bgcolor="#FFFFFF" text="Multiple Employee" paraText="Generate multiple payslip as pdf by uploading employee details in excel template" btnColor="#0B2DAC" icon={PeopleAltOutlined}  url='/excel'/>
             </Grid>
         </Grid>
     </Container>

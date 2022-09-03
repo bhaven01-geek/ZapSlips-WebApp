@@ -91,6 +91,8 @@ export default function NavSection({ navConfig }) {
   const { pathname } = useLocation();
 
   const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
+  const match1 = (path) => {console.log(path)};
+  { console.log(match, pathname) }
   return (
     <Box >
       <List disablePadding sx={{ p: 1 }}>

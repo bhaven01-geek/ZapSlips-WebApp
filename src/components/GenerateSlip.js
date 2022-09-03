@@ -19,8 +19,8 @@ import {
 import { earnings, employeeDetails, deductions } from "../layout/utils/TemplateData";
 import { getMonth } from "../layout/utils/DateMonth";
 import { GetCols } from "./ExcelData";
-import { getGross, checkNumeric } from './helper/UtilitySalary'
-import { useDashboard } from './DashboardData';
+import {getGross , checkNumeric} from './helper/UtilitySalary'
+import {useDashboard} from './DashboardData';
 // GenerateSlip Component
 function GenerateSlip() {
 
@@ -28,10 +28,10 @@ function GenerateSlip() {
   const [progress, setProgress] = useState(0);
   const [createDocProgress, setCreateDocProgress] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("");
-  const [MonthName, setMonth] = useState('');
   const location = useLocation();
   const props = location.state;
-  const { storePayData } = useDashboard();
+  const {storePayData} = useDashboard();
+  const [MonthName, setMonth] = useState('');
 
   //Dasboard Data 
   const currYearData = {
@@ -109,7 +109,7 @@ function GenerateSlip() {
       earnings,
       employeeDetails: filteredEmployeeDetails,
       currency,
-      MonthName,
+      MonthName
     };
 
     // Create PDF BLOB with data
@@ -125,14 +125,14 @@ function GenerateSlip() {
     );
     const result = blobPdf.toBlob();
 
-    // useEffect(() => {
-    // }, []);
-    // save blob as pdf
-    result.then((r) => {
-      saveAs(
-        r,
-        `ID-${employeeDetails[6].value}-${employeeDetails[0].value}-ZapSlip.pdf`
-      );
+     // useEffect(() => {
+       // }, []);
+       // save blob as pdf
+       result.then((r) => {
+         saveAs(
+           r,
+           `ID-${employeeDetails[6].value}-${employeeDetails[0].value}-ZapSlip.pdf`
+           );
       // FILE NAME -> ID-{Employee id}-{Employee name}-ZapSlip.pdf
       storePayData(currYearData);
     });
@@ -195,7 +195,7 @@ function GenerateSlip() {
           MonthName
         };
 
-
+        
         // set timer
         setTimeout(() => {
 
@@ -303,67 +303,64 @@ function GenerateSlip() {
         justifyContent: "center",
         height: "75vh",
         width: "90%",
+        flexDirection: "column",
         margin:"auto",
         padding:"8%",
-        flexDirection: "column",
       }}
+    ><InputLabel id="get-month" 
+    sx={{ fontSize: '1.2rem', fontWeight: 500, color: "#0B2DAC", textAlign: "center" }}
     >
-      <InputLabel id="get-month" 
-      sx={{ fontSize: '1.2rem', fontWeight: 500, color: "#0B2DAC", textAlign: "center" }}
-      >
-        Select Month
-      </InputLabel>
-      <Select
-      sx = {{minWidth:"120px"}}
-        labelId="get-month"
-        value={MonthName}
-        label="SelectMonth"
-        onChange={(e) => { setMonth(e.target.value) }}
-      >
-        {
-
-          getMonth().map((Month) => {
-            return (
-              <MenuItem key={Month.key} value={Month.value}>
-                {Month.value}
-              </MenuItem>
-            );
-          })
-        }
-      </Select>
+      Select Month
+    </InputLabel>
+    <Select
+    sx = {{minWidth:"120px"}}
+      labelId="get-month"
+      value={MonthName}
+      label="SelectMonth"
+      onChange={(e) => { setMonth(e.target.value) }}
+    >
       {
-        MonthName === "" ?
-          <></> :
-          <>
-            {props.data.mode === "1" ? (
-              <Button
-                disabled={loading}
-                color="primary"
-                variant="contained"
-                sx = {{marginTop:"5vh"}}
-                onClick={() => {
-                  generateOneSlip(props);
-                }}
-              >
-                Generate PaySlip
-              </Button>
-            ) : (
-              <Button
-                disabled={loading}
-                color="primary"
-                sx = {{marginTop:"5vh"}}
-                variant="contained"
-                onClick={() => {
-                  generateExcelSlips(props);
-                }}
-              >
-                Generate PaySlips
-              </Button>
-            )}
-          </>
 
-
+        getMonth().map((Month) => {
+          return (
+            <MenuItem key={Month.key} value={Month.value}>
+              {Month.value}
+            </MenuItem>
+          );
+        })
       }
+    </Select>
+    {
+      MonthName === "" ?
+        <></> :
+        <>
+      {props.data.mode === "1" ? (
+        <Button
+          disabled={loading}
+          color="primary"
+          sx = {{marginTop:"5vh"}}
+          variant="contained"
+          onClick={() => {
+            generateOneSlip(props);
+          }}
+        >
+          Generate PaySlip
+        </Button>
+      ) : (
+        <Button
+          disabled={loading}
+          color="primary"
+          variant="contained"
+          sx = {{marginTop:"5vh"}}
+          onClick={() => {
+            generateExcelSlips(props);
+          }}
+        >
+          Generate PaySlips
+        </Button>
+      )}
+      </>
+}
     </div>
   );
 }

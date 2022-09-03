@@ -65,7 +65,7 @@ const SelectMode = (props) => {
                                 textAlign: 'center',
                             }}
                         >
-                            Generate a single payslip as pdf by manually giving input for employee details, earnings, etc
+                            {props.paraText}
                         </Typography>
                         <Button
                             onClick = { () => {navigate(`/app${props.url}`)}}
