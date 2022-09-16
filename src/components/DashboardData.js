@@ -21,7 +21,7 @@ export const DashboardProvider = ({ children }) => {
         if (currentUser.uid != undefined) {
             const user_uid = currentUser.uid;
             // console.log("Dasboard datata");
-            const dbref = firebase.firestore().collection(process.env.APP_DB_NAME).doc(user_uid);
+            const dbref = firebase.firestore().collection(`${process.env.APP_DB_NAME}`).doc(user_uid);
             const Dashbobj = {
                 [`${nowYear}`]: currYearData,
             }

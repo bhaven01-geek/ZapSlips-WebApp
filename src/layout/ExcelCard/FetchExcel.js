@@ -24,7 +24,7 @@ const FetchExcel = () => {
         : console.log("Not Logged in ");
 
 
-    const dbref = firebase.firestore().collection(process.env.APP_DB_NAME).doc(user_uid);
+    const dbref = firebase.firestore().collection(`${process.env.APP_DB_NAME}`).doc(user_uid);
 
     // func to get Document Data of Logged In User from UID
     const getUser = async () => {
