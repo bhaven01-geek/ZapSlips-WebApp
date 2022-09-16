@@ -17,7 +17,7 @@ const Submit = ({ EmpformData }) => {
   const user_uid = currentUser.uid
 
 
-  const dbref = firebase.firestore().collection(`${process.env.APP_DB_NAME}`).doc(user_uid);
+  const dbref = firebase.firestore().collection("users").doc(user_uid);
 
   //Fetch Company Data from Firebase
   const getUser = async () => {
