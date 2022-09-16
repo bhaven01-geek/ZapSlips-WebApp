@@ -78,7 +78,7 @@ export default function UpdateProfile() {
     }
 
     return (
-        <div className="login-signup-container" >
+        <div className="update-profile-form" >
 
             <Container component="main" maxWidth="xs" >
 

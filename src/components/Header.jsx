@@ -75,11 +75,14 @@ const Header = () => {
                          Manage leave and salary instantly.
                          Turn data into smarter decisions and create experiences your employees will love.</p>
                         <div className="box-container">
+                                <Link to = "signup" >
                             <button id="try-slip-btn" type="button" className="btn btn-lg rounded-pill">
                                 
-                                Try ZapSlips
+                                {/* Try ZapSlips */}
+                                Try Zapslips
                                 <img src= {ArrowRight} alt ="right-arrow" className = "arrow-img"/>
                                 </button>
+                                </Link>
                         </div>
                     </div>
                 </div>

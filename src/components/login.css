@@ -7,7 +7,7 @@
     gap: 20px;
     /* height: 90vh; */
   }
-  .login-signup-container form {
+  .login-signup-container form , .update-profile-form form{
     /* box-shadow: black 0 0 2px 0; */
     border-radius: 4px;
     padding: 40px 30px;
@@ -33,4 +33,17 @@
   }
   .react-tel-input .form-control , .react-tel-input {
     height: 56px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767.98px) {
+
+  .details-cont form{
+    width:340px;
+  }
+  .react-tel-input .form-control{
+    width:280px;
+}
+.update-profile-form form {
+  width:340px;
+}
 }

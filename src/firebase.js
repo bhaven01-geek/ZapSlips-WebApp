@@ -14,6 +14,14 @@ const app = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,  
   measurementId:process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 
+  // apiKey: "AIzaSyCwRpRLRYwfPt2CAIFGRff2DoJ2Hb-wPyk",
+  // authDomain: "payslipdemo-95d90.firebaseapp.com",
+  // projectId: "payslipdemo-95d90",
+  // storageBucket: "payslipdemo-95d90.appspot.com",
+  // messagingSenderId: "578761325650",
+  // appId: "1:578761325650:web:e2a3884e601c96b583738b",
+  // measurementId: "G-WZDXR1X5W7"
+
 });
 
 // Export auth will be used for authentication
@@ -28,3 +36,12 @@ const storage = firebase.storage();
 
 export { storage, provider, firebase , Fbprovider };
 export default app;
+
+
+  // apiKey: "AIzaSyCwRpRLRYwfPt2CAIFGRff2DoJ2Hb-wPyk",
+  // authDomain: "payslipdemo-95d90.firebaseapp.com",
+  // projectId: "payslipdemo-95d90",
+  // storageBucket: "payslipdemo-95d90.appspot.com",
+  // messagingSenderId: "578761325650",
+  // appId: "1:578761325650:web:e2a3884e601c96b583738b",
+  // measurementId: "G-WZDXR1X5W7"
