@@ -14,7 +14,7 @@ const [loading, setloading] = useState(false)
     //Checks if user is Logged in Or Not
     const user_uid = currentUser ? currentUser.uid : console.log("Not Logged in ");
 
-    const dbref = firebase.firestore().collection("users").doc(user_uid);
+    const dbref = firebase.firestore().collection(process.env.APP_DB_NAME).doc(user_uid);
 
     //Get Company Data from firebase from Logged in User UID
     const getUser = async () => {

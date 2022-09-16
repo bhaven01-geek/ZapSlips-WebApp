@@ -31,7 +31,7 @@ const Dashboard = () => {
     const [DasboardData, setDasboardData] = useState({});
     const { currentUser } = useAuth();
     const user_id = currentUser.uid;
-    const dbref = firebase.firestore().collection("users").doc(user_id);
+    const dbref = firebase.firestore().collection(process.env.APP_DB_NAME).doc(user_id);
     let status = [];
     let GraphtObjsArray = [];
     const [filterYear, setfilterYear] = useState(0);
@@ -44,8 +44,8 @@ const Dashboard = () => {
                     ...querySnapshot.data(),
                 }
 
-                console.log(obj);
-                console.log(DasboardData);
+                // console.log(obj);
+                // console.log(DasboardData);
                 if (obj.Year != undefined) {
                     setDasboardData(obj.Year);
 

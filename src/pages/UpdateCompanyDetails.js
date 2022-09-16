@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { storage, firebase } from "../firebase";
-import { css } from "@emotion/react";
+// import { css } from "@emotion/react";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import RingLoader from "react-spinners/RingLoader";
+// import RingLoader from "react-spinners/RingLoader";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -15,8 +15,8 @@ import { Avatar, Button } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+// import Box from "@mui/material/Box";
+// import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { CircularProgress, Paper } from "@mui/material";
@@ -38,17 +38,17 @@ const StoreAgencyDetails = () => {
   const [_Logo, set_Logo] = useState(null);
   const [_Address, set_Address] = useState("");
   let [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   //Get the UID of loggedin User
   const { currentUser } = useAuth();
   const user_uid = currentUser.uid;
 
-  const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: red;
-  `;
+  // const override = css`
+  //   display: block;
+  //   margin: 0 auto;
+  //   border-color: red;
+  // `;
 
   const handleSubmit = async (e) => {
 

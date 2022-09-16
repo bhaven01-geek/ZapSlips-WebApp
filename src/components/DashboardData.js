@@ -18,49 +18,41 @@ export const DashboardProvider = ({ children }) => {
     let nowYear = date.getFullYear();
 
     const storePayData = async (currYearData) => {
-
-
         if (currentUser.uid != undefined) {
             const user_uid = currentUser.uid;
-            console.log("Dasboard datata");
-            const dbref = firebase.firestore().collection("users").doc(user_uid);
+            // console.log("Dasboard datata");
+            const dbref = firebase.firestore().collection(process.env.APP_DB_NAME).doc(user_uid);
             const Dashbobj = {
                 [`${nowYear}`]: currYearData,
             }
-
             dbref
                 .get()
                 .then((querySnapshot) => {
-
                     const obj = {
                         ...querySnapshot.data(),
                     }
-
                     storeSummary(obj, Dashbobj, dbref);
-
                     //if Company Details Not Filled Redirect to fill Form
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-
-
         }
 
         const storeSummary = (compData, sumData, dbref) => {
-            console.log(compData);
+            // console.log(compData);
             if (compData.Year != undefined) {
 
                 compData.Year.map((data, index) => {
-                    console.log(Object.keys(sumData) === Object.keys(data));
-                    console.log(Object.keys(sumData));
+                    // console.log(Object.keys(sumData) === Object.keys(data));
+                    // console.log(Object.keys(sumData));
                     if (Object.keys(sumData)[0] === Object.keys(data)[0]) {
 
-                        console.log("myData", Object.values(sumData));
-                        console.log("Firebase Data", Object.values(data));
-                        console.log("myData obj", sumData);
-                        console.log("firebase Obj", data);
-                        console.log("Firebase Data keys values", Object.keys(data));
+                        // console.log("myData", Object.values(sumData));
+                        // console.log("Firebase Data", Object.values(data));
+                        // console.log("myData obj", sumData);
+                        // console.log("firebase Obj", data);
+                        // console.log("Firebase Data keys values", Object.keys(data));
                         let summary_Vals = Object.values(sumData)[0];
                         let Data_Vals = Object.values(data)[0];
 
@@ -75,7 +67,7 @@ export const DashboardProvider = ({ children }) => {
                                 TDS: Data_Vals.TDS + summary_Vals.TDS,
                             }
                         }
-                        compData.Year[index] =  summObj;
+                        compData.Year[index] = summObj;
 
                         dbref
                             .set({
@@ -83,7 +75,7 @@ export const DashboardProvider = ({ children }) => {
                             }, { merge: true }).then((res) => {
                                 // setMessage("Successfully Uploaded Company Details");
                                 // setLoading(false);
-
+                                // console.log("done");
                             })
                             .catch(function (error) {
                                 // setError("Failed, Please Try Again!");
@@ -98,7 +90,7 @@ export const DashboardProvider = ({ children }) => {
                             }, { merge: true }).then((res) => {
                                 // setMessage("Successfully Uploaded Company Details");
                                 // setLoading(false);
-                                console.log(res);
+                                // console.log(res);
                             })
                             .catch(function (error) {
                                 // setError("Failed, Please Try Again!");
@@ -108,14 +100,15 @@ export const DashboardProvider = ({ children }) => {
                 })
             }
             else {
-                console.log(PayYears.push(sumData));
+                // console.log(PayYears.push(sumData));
+                PayYears.push(sumData);
                 dbref
                     .set({
                         Year: PayYears,
                     }, { merge: true }).then((res) => {
                         // setMessage("Successfully Uploaded Company Details");
                         // setLoading(false);
-                        console.log(res);
+                        // console.log(res);
                     })
                     .catch(function (error) {
                         // setError("Failed, Please Try Again!");
@@ -123,9 +116,7 @@ export const DashboardProvider = ({ children }) => {
                     });
             }
             // PayYears.push(Dashbobj);
-
         }
-
     };
 
     const value = { storePayData }

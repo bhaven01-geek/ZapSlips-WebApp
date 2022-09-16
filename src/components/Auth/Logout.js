@@ -15,9 +15,7 @@ const Logout = () => {
     setError("")
     try {
       await logout();
-      console.log("doing");
       navigate("../../login");
-      console.log("done");
     } catch {
       console.log("error");
       setError("Failed to log out");

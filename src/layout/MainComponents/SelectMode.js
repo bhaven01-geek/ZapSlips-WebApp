@@ -4,8 +4,8 @@ import '../../Assets/scss/_theme_vars.scss'
 
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
-import { Avatar, Box, Button, Typography, Stack, Divider } from '@mui/material';
-import { PersonPin } from '@mui/icons-material';
+import { Avatar, Box, Button, Typography, Stack } from '@mui/material';
+// import { PersonPin } from '@mui/icons-material';
 // project imports
 import MainCard from './MainCard'
 import { useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ const SelectMode = (props) => {
     return (
         <>
 
-            <CardWrapper border={false} sm sx={{ width: '300px', borderRadius: '10px' }}>
+            <CardWrapper border={false} sx={{ width: '300px', borderRadius: '10px' }}>
                 <Box sx={{ p: 0.5 }}>
                     <Stack spacing={3} justifyContent="space-between" alignItems="center" sx={{ margin: '20px' }} >
                         <Typography sx={{ fontSize: '1.6rem', fontWeight: 500, color: props.btnColor, textAlign: "center" }}>

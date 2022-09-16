@@ -10,9 +10,9 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -27,7 +27,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 // Update Profile component
 export default function UpdateProfile() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { currentUser, updatePassword, updateEmail } = useAuth();
 
     const [email, setEmail] = useState(currentUser.email);

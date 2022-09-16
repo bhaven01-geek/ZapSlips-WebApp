@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+// import { useState } from 'react';
+// import PropTypes from 'prop-types';
 import { NavLink as RouterLink, matchPath, useLocation } from 'react-router-dom';
 // material
 import { alpha, useTheme, styled } from '@mui/material/styles';
-import { Box, List, Collapse, ListItemText, ListItemIcon, ListItemButton } from '@mui/material';
+import { Box, List, ListItemText, ListItemIcon, ListItemButton } from '@mui/material';
 // import Iconify from './Iconify';
 
 const ListItemStyle = styled((props) => <ListItemButton disableGutters {...props} />)(({ theme }) => ({
@@ -19,14 +19,14 @@ const ListItemStyle = styled((props) => <ListItemButton disableGutters {...props
   borderRadius: theme.shape.borderRadius,
 }));
 
-const ListItemIconStyle = styled(ListItemIcon)({
-  width: 22,
-  height: 22,
-  color: 'inherit',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-});
+// const ListItemIconStyle = styled(ListItemIcon)({
+//   width: 22,
+//   height: 22,
+//   color: 'inherit',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+// });
 
 
 // NavItem.propTypes = {
@@ -91,8 +91,7 @@ export default function NavSection({ navConfig }) {
   const { pathname } = useLocation();
 
   const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
-  const match1 = (path) => {console.log(path)};
-  { console.log(match, pathname) }
+
   return (
     <Box >
       <List disablePadding sx={{ p: 1 }}>
